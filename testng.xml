@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="org.meto.appium.tests.TFBusiness"/>
+      <class name="org.meto.appium.utils.AndroidActionsGuarantor"/>
+      <class name="org.meto.appium.tests.TFLogin"/>
+      <class name="org.meto.appium.tests.TFGuarantor"/>
+      <class name="org.meto.appium.tests.TFCustomer"/>
+      <class name="org.meto.appium.tests.TFSignature"/>
+      <class name="org.meto.appium.tests.TFCustomerGuarantor"/>
+      <class name="org.meto.appium.pages.FormCustomer"/>
+      <class name="org.meto.appium.tests.TFRse"/>
+      <class name="org.meto.appium.tests.TFProposal"/>
+      <class name="org.meto.appium.tests.TFProspect"/>
+      <class name="org.meto.appium.tests.TFContract"/>
+      <class name="org.meto.appium.utils.AndroidActions"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

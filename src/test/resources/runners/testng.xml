@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Data Driven Basics">
+<listeners>
+<listener class-name="org.meto.appium.extentreports.Listeners"/>
+</listeners>
+
+	<test name="App Manager Login Test">
+		<classes>
+			<class name="org.meto.appium.tests.TFLogin" />
+		</classes>
+	</test> <!-- Test -->
+
+	 <test name="Prospect Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFProspect" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Customer Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFCustomer" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Business Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFBusiness" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Rse Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFRse" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Proposal Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFProposal" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Contract Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFContract" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Signature Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFSignature" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Guarantor Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFGuarantor" /> 
+		</classes> 
+	</test>   <!-- Test -->
+	
+	<test name="Customer Guarantor Test"> 
+		<classes> 
+			<class name="org.meto.appium.tests.TFCustomerGuarantor" /> 
+		</classes> 
+	</test>  <!-- Test -->
+
+	<!-- <test name="Open Account Test"> <classes> <class name="com.m2a.testcases.OpenAccountTest" 
+		/> </classes> </test> -->   <!-- Test -->
+
+</suite> <!-- Suite -->
