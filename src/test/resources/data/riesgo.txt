@@ -1,0 +1,8 @@
+La contingencia de experian esta en RCC
+
+En servicio APIBASES/AMPLIADOS trae el bh_score
+
+Resultado regla CMA:
+0=Rechaza
+1=Aprobado
+2=Excepción

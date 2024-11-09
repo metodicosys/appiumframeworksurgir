@@ -9,9 +9,10 @@
       <class name="org.meto.appium.tests.TFLogin">
         <methods>
           <include name="beforeMethod"/>
-          <include name="FillForm"/>
           <include name="setup"/>
           <include name="teardown"/>
+          <include name="Rol"/>
+          <include name="Login"/>
         </methods>
       </class> <!-- org.meto.appium.tests.TFLogin -->
     </classes>
@@ -21,9 +22,10 @@
       <class name="org.meto.appium.tests.TFProspect">
         <methods>
           <include name="setup"/>
-          <include name="FillProspect"/>
+          <include name="Prospect"/>
           <include name="teardown"/>
           <include name="beforeMethod"/>
+          <include name="UsoDatos"/>
         </methods>
       </class> <!-- org.meto.appium.tests.TFProspect -->
     </classes>
@@ -32,8 +34,10 @@
     <classes>
       <class name="org.meto.appium.tests.TFCustomer">
         <methods>
-          <include name="FillCustomer"/>
+          <include name="Customer"/>
           <include name="beforeMethod"/>
+          <include name="InfComplementaria"/>
+          <include name="Domicilio"/>
           <include name="setup"/>
           <include name="teardown"/>
         </methods>
@@ -44,7 +48,7 @@
     <classes>
       <class name="org.meto.appium.tests.TFBusiness">
         <methods>
-          <include name="FillBusiness"/>
+          <include name="Business"/>
           <include name="beforeMethod"/>
           <include name="setup"/>
           <include name="teardown"/>
@@ -57,9 +61,9 @@
       <class name="org.meto.appium.tests.TFRse">
         <methods>
           <include name="beforeMethod"/>
-          <include name="FillRse"/>
           <include name="setup"/>
           <include name="teardown"/>
+          <include name="Rse"/>
         </methods>
       </class> <!-- org.meto.appium.tests.TFRse -->
     </classes>
@@ -69,7 +73,8 @@
       <class name="org.meto.appium.tests.TFProposal">
         <methods>
           <include name="beforeMethod"/>
-          <include name="FillProposal"/>
+          <include name="Propuesta"/>
+          <include name="Propuesta_error"/>
           <include name="setup"/>
           <include name="teardown"/>
         </methods>
@@ -80,9 +85,9 @@
     <classes>
       <class name="org.meto.appium.tests.TFContract">
         <methods>
-          <include name="FillContract"/>
           <include name="setup"/>
           <include name="beforeMethod"/>
+          <include name="TestContract"/>
           <include name="teardown"/>
         </methods>
       </class> <!-- org.meto.appium.tests.TFContract -->
@@ -92,36 +97,12 @@
     <classes>
       <class name="org.meto.appium.tests.TFSignature">
         <methods>
-          <include name="setup"/>
           <include name="FillSignature"/>
+          <include name="setup"/>
           <include name="teardown"/>
           <include name="beforeMethod"/>
         </methods>
       </class> <!-- org.meto.appium.tests.TFSignature -->
     </classes>
   </test> <!-- Signature Test(failed) -->
-  <test thread-count="5" name="Guarantor Test(failed)">
-    <classes>
-      <class name="org.meto.appium.tests.TFGuarantor">
-        <methods>
-          <include name="FillGuarantor"/>
-          <include name="beforeMethod"/>
-          <include name="setup"/>
-          <include name="teardown"/>
-        </methods>
-      </class> <!-- org.meto.appium.tests.TFGuarantor -->
-    </classes>
-  </test> <!-- Guarantor Test(failed) -->
-  <test thread-count="5" name="Customer Guarantor Test(failed)">
-    <classes>
-      <class name="org.meto.appium.tests.TFCustomerGuarantor">
-        <methods>
-          <include name="beforeMethod"/>
-          <include name="setup"/>
-          <include name="FillCustomerGuarantor"/>
-          <include name="teardown"/>
-        </methods>
-      </class> <!-- org.meto.appium.tests.TFCustomerGuarantor -->
-    </classes>
-  </test> <!-- Customer Guarantor Test(failed) -->
 </suite> <!-- Failed suite [Data Driven Basics] -->

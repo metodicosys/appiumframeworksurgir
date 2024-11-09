@@ -18,7 +18,7 @@ import io.appium.java_client.pagefactory.DefaultElementByBuilder;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobilePlatform;
 
-public class FormRse extends AndroidActions{
+public class FormRse<MobileElement> extends AndroidActions{
 	AndroidDriver driver;
 	
 	public FormRse(AndroidDriver driver) {
@@ -29,212 +29,165 @@ public class FormRse extends AndroidActions{
 
 	}
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/autoCompleteTextView")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/autoCompleteTextView")
 	private WebElement autoc;
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/autoCompleteTextView")).sendKeys("VE");
+	//Contingencia
+	@AndroidFindBy(xpath="//android.widget.TextView[@text=\"App Surgir en contingencia\"]")
+	private WebElement enconting;
+	
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/autoCompleteTextView")
 	private WebElement autoctext;
 	
-	//	driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")).sendKeys("10");;
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activeone;
 	
-	//	MobileElement el4 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
-	private WebElement activetwo;
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
+	private WebElement activebco;
 	
-	//MobileElement el5 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")                   
 	private WebElement activetree;
-	
-	//MobileElement el6 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
+		
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activefour;
 
-	//MobileElement el7 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activefive;
 	
-	//MobileElement el8 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[6]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[6]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[6]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activesix;
 	
-	//MobileElement el9 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[7]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[7]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[7]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activeseven;
 	
-	//MobileElement el10 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activeeight;
 	
-	//MobileElement el11 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activenine;
 	
-	//MobileElement el12 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activethen;
 	
-	//MobileElement el13 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activeeleven;
 	
-	//MobileElement el14 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement activetwelv;
 	
-	//MobileElement el15 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+	//pasivo corriente
+	@AndroidFindBy(xpath="//android.widget.EditText[@text='Deudas con proveedores']")
 	private WebElement pasivocone;
 	
-	//MobileElement el16 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@text='Deudas entidades financieras']")
 	private WebElement pasivoctwo;
 	
-	//MobileElement el17 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@text='Deuda con Surgir']")
 	private WebElement pasivoctree;
 	
-	//MobileElement el18 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@text='Otras cuentas por pagar']")
 	private WebElement pasivocfour;
 	
-	//MobileElement el19 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[4]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText");
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[4]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@text='Pasivo largo plazo']")
 	private WebElement pasivolargoplazo;
 	
-	//MobileElement el20 = (MobileElement) driver.findElementById("pe.com.surgir.surgirapp:id/rse_add_product");
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/rse_add_product")
 	private WebElement addprod;
 	
-	//MobileElement el23 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement valormat;
 	
-	//WebElement el24 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement valorobra;
 	
-	//MobileElement el22 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement precioventa;
 	
-	//MobileElement el21 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement produc;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Unidad de medida']")).click();
 	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Unidad de medida']")
 	private WebElement unidadm;
 	
-	//MobileElement el25 = (MobileElement) driver.findElementById("pe.com.surgir.surgirapp:id/btn_submit_prospect");
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btn_submit_prospect")
 	private WebElement btnprod;
 	
-	//MobileElement el26 = (MobileElement) driver.findElementById("pe.com.surgir.surgirapp:id/rse_add_expenses");
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/rse_add_expenses")
 	private WebElement btndeuda;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Destino de la deuda']")).click();
 	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Destino de la deuda']")
 	private WebElement destdeuda;
 	
-	//MobileElement el27 = (MobileElement) driver.findElementById("pe.com.surgir.surgirapp:id/autoCompleteTextView");
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/autoCompleteTextView")
 	private WebElement entidab;
 	
-	//MobileElement el28 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement montot;
 	
-	//MobileElement el29 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement saldoc;
 	
-	//MobileElement el30 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement valorc;
 
-	//MobileElement el31 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement cuota;
 	
-	//MobileElement el32 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[6]/android.widget.FrameLayout/android.widget.EditText");
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[6]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement cpagada;
 	
-	//MobileElement el33 = (MobileElement) driver.findElementById("pe.com.surgir.surgirapp:id/btn_submit_prospect");
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btn_submit_prospect")
 	private WebElement btngastos;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Gasto de personal']")).sendKeys("10");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Gasto de personal']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Gasto de personal']")
 	private WebElement gastop;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Alquiler']")).sendKeys("10");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Alquiler']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Alquiler']")
 	private WebElement alquila;
 
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Transporte']")).sendKeys("10");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Transporte']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Transporte']")
 	private WebElement transp;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Mantenimiento (Agua/luz/gas)']")).sendKeys("10");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Mantenimiento (Agua/luz/gas)']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Mantenimiento (Agua/luz/gas)']")
 	private WebElement mant;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Otros servicios (Internet/teléfono/celular)']")).sendKeys("10");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Otros servicios (Internet/teléfono/celular)']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Otros servicios (Internet/teléfono/celular)']")
 	private WebElement otross;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Alimentación']")).sendKeys("15");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Alimentación']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Alimentación']")
 	private WebElement alimenta;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Salud']")).sendKeys("15");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Salud']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Salud']")
 	private WebElement salud;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Alquiler vivienda']")).sendKeys("15");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Alquiler vivienda']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Alquiler vivienda']")
 	private WebElement alquilav;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Servicios públicos vivienda']")).sendKeys("15");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Servicios públicos vivienda']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Servicios públicos vivienda']")
 	private WebElement publicov;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Educación']")).sendKeys("15");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Educación']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Educación']")
 	private WebElement educa;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Transporte']")).sendKeys("15");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Transporte']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Transporte']")
 	private WebElement transpor;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Entretenimiento']")).sendKeys("20");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Entretenimiento']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Entretenimiento']")
 	private WebElement entret;
 	
-	//driver.findElement(By.xpath("//android.widget.RadioButton[@text='Sí']")).click(); 
 	@AndroidFindBy(xpath="//android.widget.RadioButton[@text='Sí']")
 	private WebElement btnotring;
 	
-	//MobileElement el32x = (MobileElement) driver.findElementById("pe.com.surgir.surgirapp:id/etInputGeneral");
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/etInputGeneral")
 	private WebElement otring;
 	
-	//driver.findElement(By.xpath("//android.widget.TextView[@text='Constancia de otros ingresos']")).click();
 	@AndroidFindBy(xpath="//android.widget.TextView[@text='Constancia de otros ingresos']")
 	private WebElement fotoconsing;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Origen de otros ingresos']")).click();
 	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Origen de otros ingresos']")
 	private WebElement origingreso;
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnFormBusinessNext")).click();
-	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnFormBusinessNext")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.Button[2]")
 	private WebElement btnextrse;
 	
 	//Botón Listo de galeria
@@ -245,6 +198,9 @@ public class FormRse extends AndroidActions{
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnFormBusinessSave")
 	private WebElement btnbusness;
 	
+	//scroll
+	@AndroidFindBy(uiAutomator  = "UiScrollable(\"className(\"android.widget.ScrollView\")\").scrollIntoView(resourceId(\"pe.com.surgir.surgirapp:id/rse_subtitle_fixed_asset\"))")
+	private MobileElement buttonOfTheScreen;  //uiAutomator
 	
 	public FormRse autoComplit() {
 		autoc.click();
@@ -267,7 +223,7 @@ public class FormRse extends AndroidActions{
 	}
 	
 	public FormRse activeC2(String active2) {
-		activetwo.sendKeys(active2);
+		activebco.sendKeys(active2);
 		return this;
 		
 	}
@@ -333,6 +289,7 @@ public class FormRse extends AndroidActions{
 
 	public FormRse pasivoC1(String pasivoc1) {
 		pasivocone.sendKeys(pasivoc1);
+	//	pasivocone.sendKeys(pasivoc1);
 		return this;
 		
 	}
@@ -552,6 +509,47 @@ public class FormRse extends AndroidActions{
 		
 	}
 	
+/*
+	public FormCustomer swipeScreenMarried() {
+		avance5casado();
+		return this;
+		
+	}*/
+	
+	public FormRse nextfive() {
+		findScrollablerse1();
+		return this;
+		
+	}
+	
+	public FormRse nextsix() {
+		findScrollablerse2();
+		return this;
+		
+	}
+	
+	public FormRse nextseven() {
+		findScrollablerse3();
+		return this;
+		
+	}
+	
+	//Probando scroll despues de deuda en rse
+	public FormRse nextheigh() {
+		//findScrollablerse4();
+		scrollToPagerse1();
+		return this;
+		
+	}
+	
+	public FormRse nextpageheigh() {
+		scrollToPagerse1();
+		return this;
+		
+	}
+	
+	
+	
 	public FormRse origenOtroIngreso() {
 		origingreso.click();
 		origendeOtroIng();
@@ -580,13 +578,24 @@ public class FormRse extends AndroidActions{
 	
 	
 	public FormRse swipeScreenOneRse() {
-		swipeScreen();
-		return this;
-		
-	}
+		//swipeScreen();
+			String toastMessage = enconting.getAttribute("name");
+			System.out.println("Continggencia: "+ toastMessage);
+			if (toastMessage.contains("contingencia")) {
+				swipeScreen2(); //concontingencia
+			}else {
+				swipeScreen();
+			}
+			
+			return this;
+			
+		}
+
 	
 	public FormRse swipeScreenTwoRse() {
-		swipeScreenTwoRsen();
+	//	swipeScreenTwoRsen();
+		swipeScreen();
+	//	avancersegasto();
 		return this;
 		
 	}

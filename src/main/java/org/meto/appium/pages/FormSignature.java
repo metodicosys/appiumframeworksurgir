@@ -139,6 +139,12 @@ public class FormSignature extends AndroidActions{
 		
 	}
 	
+	public FormSignature politicdate() {
+		politics();
+		return this;
+		
+	}
+	
 	/*
 	public FormSignature finishSend() throws InterruptedException {		
 		envia.click();

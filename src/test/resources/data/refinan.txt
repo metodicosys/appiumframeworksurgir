@@ -1,0 +1,4 @@
+ -no debe tener foto experian
+ -no debe tener boton calcular tasa, solo tiene una tasa
+ -no tiene forma de pago
+ 

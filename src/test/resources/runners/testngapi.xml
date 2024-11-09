@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Api">
+	<test name="Autorizacion">
+		<classes>
+			<class name="org.meto.api.test.EndPointAuth"/>
+		</classes>
+	</test> <!-- Test -->
+
+	<!--<test name="Test API Estado Civil">
+		<classes>
+			<class name="org.meto.api.endpoints.EndPointCatalogs_ecivil" />
+		</classes>
+	</test>--> <!-- Test -->
+	
+</suite> <!-- Suite -->

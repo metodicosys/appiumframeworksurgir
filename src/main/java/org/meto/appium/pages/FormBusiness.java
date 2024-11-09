@@ -28,35 +28,33 @@ public class FormBusiness extends AndroidActions{
 
 	}
 
-	//driver.findElement(By.xpath("//android.widget.TextView[@text='Selfie en el negocio']")).click();
+	@AndroidFindBy(xpath="//android.widget.LinearLayout[@content-desc=\"Cliente\"]")
+	private WebElement businessp;
+	
 	@AndroidFindBy(xpath="//android.widget.TextView[@text='Selfie en el negocio']")
 	private WebElement fotonegocio;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Tiempo función en años']")).click();
-	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Tiempo función en años']")
+	//@AndroidFindBy(xpath="//android.widget.RadioButton[@text=No]")
+	//private WebElement nodenegocio;
+	
+	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@hint='Tiempo función en años']")
 	private WebElement timeanio;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Experiencia en años']")).click();
-	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Experiencia en años']")
+	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@hint='Experiencia en años']")
 	private WebElement expanios;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Inicio de la actividad']")).sendKeys("01/01/2020");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Inicio de la actividad']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Inicio de la actividad']")
 	private WebElement inicioact;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Tipo de establecimiento']")).click();
-	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Tipo de establecimiento']")
+	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@hint='Tipo de establecimiento']")
 	private WebElement tipoest;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Número de empleados']")).sendKeys("1");
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Número de empleados']")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Número de empleados']")
 	private WebElement numemp;
 	
-	//	driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnFormBusinessSave")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnFormBusinessSave")
 	private WebElement savenegocio;
 
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnFormBusinessNext")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnFormBusinessNext")
 	private WebElement nextnegocio;
 	
@@ -64,7 +62,14 @@ public class FormBusiness extends AndroidActions{
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/button_gallery_listo")
 	private WebElement nListo;
 	
+	public FormBusiness BussinesP() {
+		businessp.click();
+		return this;
+
+	}
+	
 	public FormBusiness photoSelfie() {
+	//	Thread.sleep(5000);
 		fotonegocio.click();
 		fotonegocio.click();
 		fotoExpir();
@@ -110,12 +115,6 @@ public class FormBusiness extends AndroidActions{
 		return this;
 		
 	}
-	/*
-	public FormBusiness nextBusiness() {
-		nextnegocio.click();
-		return this;
-		
-	}*/
 	
 	public FormRse nextBusiness() throws InterruptedException  {
 		nextnegocio.click();

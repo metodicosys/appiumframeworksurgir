@@ -3,14 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="org.meto.appium.tests.TFSignature">
+      <class name="org.meto.api.test.DDTestAuthentication">
         <methods>
-          <include name="setup"/>
-          <include name="FillSignature"/>
-          <include name="teardown"/>
-          <include name="beforeMethod"/>
+          <include name="testPostRoleD"/>
         </methods>
-      </class> <!-- org.meto.appium.tests.TFSignature -->
+      </class> <!-- org.meto.api.test.DDTestAuthentication -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

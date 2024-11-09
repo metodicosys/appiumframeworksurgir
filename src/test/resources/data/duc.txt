@@ -1,0 +1,3 @@
+-En datos de conyugue, debe mostrar(nombres y dni) en la sección de firmas, apesar de que la opción en APP sea
+Si firma o No firma.
+-

@@ -1,0 +1,7 @@
+SEGUROS:
+SEGDES     + multiriesgo = NO debe tener BENEFICIARIO multi, pero si el desgravamen
+SEGDES     + plan 4,plan5,plan6 = BENEFICIARIO PARA AMBOS
+porcentual + multiriesgo = NO debe tener Beneficiario
+porcent devolucion + multiriesgo = NO debe tener Beneficiario
+porcentual + plan 4,plan5,plan6 = BENEFICIARIO SOLO para optativos
+porcent devolucion + plan 4,plan5,plan6 = BENEFICIARIO SOLO para optativos

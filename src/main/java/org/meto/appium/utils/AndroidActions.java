@@ -1,31 +1,39 @@
 package org.meto.appium.utils;
 
 import org.testng.annotations.Test;
-import java.sql.Array;
 import java.time.Duration;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.xdgf.usermodel.section.geometry.MoveTo;
 import org.meto.appium.pages.FormProposal;
-import org.meto.appium.pages.FormProspect;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.PointerInput.Kind;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.remote.tracing.Tags;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.PerformsTouchActions;
+//import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidTouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.AbstractOptionCombinedWithPosition;
@@ -33,10 +41,17 @@ import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 
 import static io.appium.java_client.touch.TapOptions.tapOptions;
+import static java.time.Duration.ofMillis;
+import static org.openqa.selenium.interactions.PointerInput.MouseButton.LEFT;
+import static org.openqa.selenium.interactions.PointerInput.Origin.viewport;
+import static org.testng.Assert.assertNotNull;
 
 public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 	AndroidDriver driver;
-//	String segmento = driver.findElement(By.id("pe.com.surgir.surgirapp:id/id_segment")).getText();
+
+	static String numdoc;
+	static String nsegment;
+	static String casah;
 	
 	public AndroidActions(AndroidDriver driver)
 	{
@@ -49,7 +64,7 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 				"duration",2000));
 	}
 	
-	
+	/*
 	public void scrollToEndAction()
 	{
 		boolean canScrollMore;
@@ -61,14 +76,10 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		);
 		
 		}while(canScrollMore);
-	}
+	}*/
 	
 	//NO FUNCIONO PARA DROPDOWN DE DEPARTAMETO
 	public void scrollToTest() {
-		//pe.com.surgir.surgirapp:id/rol_layout
-		//pe.com.surgir.surgirapp:id/form_department
-		
-		//WebElement provdropdown = driver.findElement(By.xpath("//android.widget.EditText[@text='Departamento']"));
 		WebElement provdropdown = driver.findElement(By.id("pe.com.surgir.surgirapp:id/form_department"));
 		provdropdown.click();
 		// Calculate the coordinates to perform the scroll
@@ -85,141 +96,338 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		
 
 	}
-	
-	public void scrollToTestTwo() {
-		//pe.com.surgir.surgirapp:id/rol_layout
-		//pe.com.surgir.surgirapp:id/form_department
 		
-		//WebElement provdropdown = driver.findElement(By.xpath("//android.widget.EditText[@text='Departamento']"));
-		WebElement provdropdown = driver.findElement(By.id("pe.com.surgir.surgirapp:id/form_department"));
-		provdropdown.click();
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().description(\"LIMA\")).scrollForward()"));
-	//	driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().description(\"LIMA\")).scrollBackward()"));
-
-		
-
-	}
-
-	
-	public void scrollToDepart() {
-
-		//driver.findElement(By.xpath("//android.widget.EditText[@text='Departamento']")).sendKeys("LIMA");
-
-	
-		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable (new UiSelector().scrollable(true).instancia(1)).scrollIntoView(new UiSelector().textContains(\"LIMA\").instance(0);"));
-					
-
-	}
-	
 	public void scrollToPage(WebElement selectProspect, String text2) {
 //		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"AAAAA\"));"));
 //		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));"));	    
 //		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/atomicNumberDefinition\")).scrollIntoView(new UiSelector().textMatches(\"Autorización de uso de datos personales\").instance(0))")).click();
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\""+selectProspect+"\")).scrollIntoView(new UiSelector().textMatches(\""+text2+"\").instance(0))"));
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\""+selectProspect+"\")).scrollIntoView(new UiSelector().textMatches(\""+text2+"\").instance(0))"));
 
 		
 	}
 	
 	//subi al inicio
 	public void scrollToPageCustomer1() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Apellido materno\").instance(0))"));
-
+		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Domicilio\"));"));	
+	//	driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Apellido materno\").instance(0))"));
+	
 	}
 	
 	public void scrollToPageCustomer2() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Domicilio\").instance(0))"));
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Domicilio\").instance(0))"));
 		
 	}
+	
+	//bajas hasta cliente iletrado
+	public void scrollToPageCustomer3() {
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/rlFormCustomerGeneral\")).scrollIntoView(new UiSelector().textMatches(\"Cliente iletrado\").instance(0))"));
+
+	}
+	
+	//bajas hasta ocupacion
+	public void scrollToPageCustomer4() {
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/rlFormCustomerGeneral\")).scrollIntoView(new UiSelector().textMatches(\"Contacto\").instance(0))"));
+
+	}
+	
+	//bajas hasta informacion complementaria --no ejecuta
+	public void scrollToPagerse1() {	
+		String locator = "UiScrollable(\"className(\"androidx.recyclerview.widget.RecyclerView\")\").scrollIntoView(resourceId(\"pe.com.surgir.surgirapp:id/rse_subtitle_monthly_business_expenses\"))";
+		driver.findElement(MobileBy.AndroidUIAutomator(locator)).click();
 		
+	}
+	
+	public boolean scrollTest() {
+		try {
+			boolean isScrollable = Boolean.valueOf(driver.findElement(By.className("android.widget.ScrollView")).getAttribute("scrollable"));
+			if(isScrollable) {
+				
+				driver.findElement(MobileBy.AndroidUIAutomator(
+				        "new UiScrollable(new UiSelector().scrollable(true))" +
+				         ".scrollIntoView(new UiSelector().text(\"Activo fijo\"))"));
+				return true;
+			}else {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+	
+	//validando propuesta
+	public void testProposal() {
+		//scroll
+		int count = driver.findElements(By.id("")).size();
+		for (int i=0;i<count;i++) {
+			String texttasa=driver.findElements(By.id("")).get(i).getText();
+			if(texttasa.equalsIgnoreCase("ABC"))
+			{
+				driver.findElements(By.id("")).get(i).click();
+				break;
+			}
+		}
+		//guardar
+	}
+	
+	//calculanto valor total y validando
+	public void amountp1() {
+		String amount1 = driver.findElements(By.id("")).get(0).getText();
+		double amount1value = getAmount(amount1);
+		//double amount1value = Double.parseDouble(amount1);
+		
+		String amount2 = driver.findElements(By.id("")).get(0).getText();
+		double amount2value = getAmount(amount2);
+		//double amount2value = Double.parseDouble(amount2);
+		
+		double total1 = amount1value + amount2value;
+		System.out.println(total1 + "Monto suma");
+		
+		String totalneto = driver.findElement(By.id("")).getText();
+		double totalvalue = Double.parseDouble(totalneto);
+		System.out.println(totalvalue + "Monto total vista");
+		
+		Assert.assertEquals(total1, totalvalue);
+		
+	}
+	
+	public double getAmount(String value)
+	{
+		double amount1value = Double.parseDouble(value);
+		return amount1value;
+		
+	}
+	
+	
+	//En resourceId se deb poner el id de page
+	@Test public void findScrollablerse1() {
+		System.out.println("Datos: " + driver.findElements(By.id("pe.com.surgir.surgirapp:id/etInputGeneral")).size());
+		WebElement dater = driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Activo fijo\").instance(0))"));
+	//	WebElement dater1 = driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/atomicNumberDefinition\")).scrollIntoView(new UiSelector().text(\"Activo fijo\"));"));
+		assertNotNull(dater.getLocation());
+		
+	}
+	
+	@Test public void findScrollablerse2() {
+		System.out.println("Datos: " + driver.findElements(By.id("pe.com.surgir.surgirapp:id/etInputGeneral")).size());
+		WebElement dater1 = driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Resultante pasivo corriente\").instance(0))"));
+		assertNotNull(dater1.getLocation());
+		dater1.click();
+	}
+	
+	@Test public void findScrollablerse3() {
+		System.out.println("Datos: " + driver.findElements(By.id("pe.com.surgir.surgirapp:id/etInputGeneral")).size());
+		WebElement dater2 = driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Pasivo a largo plazo\").instance(0))"));
+		assertNotNull(dater2.getLocation());
+		
+	}
+	
+	@Test public void findScrollablerse4() {
+		System.out.println("Datos: " + driver.findElements(By.id("pe.com.surgir.surgirapp:id/etInputGeneral")).size());
+		WebElement dater3 = driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Gastos familiares mensuales\").instance(0))"));
+		assertNotNull(dater3.getLocation());
+		
+	}
+	
+	
+	
 	public void scrolluseData() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/atomicNumberDefinition\")).scrollIntoView(new UiSelector().textMatches(\"Autorización de uso de datos personales\").instance(0))")).click();
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/atomicNumberDefinition\")).scrollIntoView(new UiSelector().textMatches(\"Autorización de uso de datos personales\").instance(0))")).click();
 	//	driver.findElement(By.id("pe.com.surgir.surgirapp:id/positive_radio_button")).click();
 		
 	}
 	
+	public void crollToPageResp () {
+		List<WebElement> listsResp = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
+		TouchAction action = new TouchAction(driver); 
+		action.longPress(PointOption.point(590, 1610)) //(70, 1097)
+         .moveTo(PointOption.point(590, 690));  //(70, 800)
+		action.release();
+		action.perform();
+		
+		
+	}
+	
 	public void scrollToPageProposal() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Seguros\").instance(0))"));
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Seguro de desgravamen\").instance(0))"));
 		
 	}
 	
 	public void scrollToPageBeneficiari() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Seguros asociados\").instance(0))"));
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Seguros asociados\").instance(0))"));
 		
 	}
 	
 	public void scrollToPageContract() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Firma de contrato\").instance(0))"));
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Firma de contrato\").instance(0))"));
 		
 	}
 	
 	public void scrollToPageSignature() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/primaryScroll\")).scrollIntoView(new UiSelector().textMatches(\"Uso de datos personales\").instance(0))"));
-	//	driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/primaryScroll\")).scrollIntoView(new UiSelector().textMatches(\"Uso de datos personales\").instance(0))")).click();
+	//	driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/primaryScroll\")).scrollIntoView(new UiSelector().textMatches(\"Firma\").instance(0))"));
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/view_pager2\")).scrollIntoView(new UiSelector().textMatches(\"Firma\").instance(0))"));
 
 	}
 	
 	public void scrollToPageSignaturetwo() {
-		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/primaryScroll\")).scrollIntoView(new UiSelector().textMatches(\"Descartar\").instance(0))"));
-	//	driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/primaryScroll\")).scrollIntoView(new UiSelector().textMatches(\"Uso de datos personales\").instance(0))")).click();
+		driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/primaryScroll\")).scrollIntoView(new UiSelector().textMatches(\"Descartar\").instance(0))"));
 
 	}
 	
-	
-	public void touchAgencia(String text) {
-		List<WebElement> lists1 = driver.findElements(By.xpath("//android.widget.EditText[@text='"+text+"']"));
-		TouchAction touch = new TouchAction<>(driver);
-		touch.press(PointOption.point(466, 1048));
-		touch.release();
-		touch.perform();
+	//Cliente
+	public void fotoExperiandet() {
+		List<WebElement> lists4 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(2), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
-	public void touchRol(String text) {
-		List<WebElement> lists1 = driver.findElements(By.xpath("//android.widget.EditText[@text='"+text+"']"));
-		TouchAction touch = new TouchAction<>(driver);
-		touch.press(PointOption.point(383, 1176));
-		touch.release();
-		touch.perform();
+	public void fotofrenteDnidet() {
+		List<WebElement> lists5 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(2), viewport(), 341, 548));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
+		
+	}
+		
+	public void fotoreversoDnidet() {
+		List<WebElement> lists6 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery"));
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 638, 252));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
+		
+	}
+	
+	public void fotoClientedet(){
+		List<WebElement> lists7 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery"));
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
+        
+	}
+	
+	public void touchAgencia() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListAgency=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListAgency) {
+		//	System.out.println(webElementmobileElement); //
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("CANTO GRANDE INDIVIDUAL")){  //"CANTO GRANDE INDIVIDUAL"
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+	}
+	
+	public void touchRol(String role) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListAgency=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListAgency) {
+		//	System.out.println(webElementmobileElement); //
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals(role)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 	}
 	
-	/*
-	public void touchGenero(String text) {
-		List<WebElement> lists1 = driver.findElements(By.xpath("//android.widget.EditText[@text='"+text+"']"));
-		TouchAction touch = new TouchAction<>(driver);
-		touch.press(PointOption.point(250, 549));
-		touch.release();
-		touch.perform();
-
-	}*/
-	
-	//Usando DropDown
-	/*
 	public void gradoInstruction() {
-		Select dropdown = new Select(driver.findElement(By.id("pe.com.surgir.surgirapp:id/list")));
-	//	dropdown.selectByVisibleText("SECUNDARIA");
-	//	dropdown.selectByIndex(1);
-		dropdown.selectByValue("SECUNDARIA");
-		
-	}*/
-	
-	public void gradoInstruction() {
-		List<WebElement> lists8 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch8 = new TouchAction<>(driver);
-		touch8.press(PointOption.point(121,1149));
-		touch8.release();
-		touch8.perform(); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		@SuppressWarnings("unchecked")
+		List<MobileElement> ListGinstr=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListGinstr) {
+		//	System.out.println(webElementmobileElement);
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chac = ((WebElement) webElementmobileElement).getText();
+		        if(chac.equals("SECUNDARIA")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 
 	public void profesion() {
-		List<WebElement> lists9 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch9 = new TouchAction<>(driver);
-		touch9.press(PointOption.point(731,1082));
-		touch9.release();
-		touch9.perform(); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		@SuppressWarnings("unchecked")
+		List<MobileElement> ListProf=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListProf) {
+			//System.out.println(webElementmobileElement);
+		      //  System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chac = ((WebElement) webElementmobileElement).getText();
+		        if(chac.equals("COMERCIANTE")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
+	
+	public void ecivilselected(String ecselc) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		@SuppressWarnings("unchecked")
+		List<MobileElement> ListEcivilselect=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListEcivilselect) {
+		        String chac = ((WebElement) webElementmobileElement).getText();
+		        if(chac.equals(ecselc)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+	}
+	
+	
+	//Estado civil
+	/*
+	public void estadCivil(String ec) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		@SuppressWarnings("unchecked")
+		List<MobileElement> allListTextec=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListTextec) {
+		//	System.out.println(webElementmobileElement);
+		     //   System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		      //  if(chab.equals("CASADO")){
+		        if(chab.equals(ec)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	}*/
+	
 	
 	public void codigodearea() {
 		List<WebElement> lists10 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
@@ -231,23 +439,52 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 	}
 	
 	public void operadordeTelef() {
-		List<WebElement> lists11 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch11 = new TouchAction<>(driver);
-		touch11.press(PointOption.point(104,887));
-		touch11.release();
-		touch11.perform();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		@SuppressWarnings("unchecked")
+		List<MobileElement> ListOpetelf=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListOpetelf) {
+		//	System.out.println(webElementmobileElement);
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chac = ((WebElement) webElementmobileElement).getText();
+		        if(chac.equals("CLARO")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+	public void fotoComprobanteDomdet() {
+		List<WebElement> lists7x = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery"));
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
+        
+	}
+	
+	public void tipoComprobante() {		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			@SuppressWarnings("unchecked")
+			List<MobileElement> ListCompPago=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			for (MobileElement webElementmobileElement : ListCompPago) {
+			//	System.out.println(webElementmobileElement);
+			  //      System.out.println(((WebElement) webElementmobileElement).getText());
+			        String chac = ((WebElement) webElementmobileElement).getText();
+			        if(chac.equals("Constancia de alojado")){
+			        	((WebElement) webElementmobileElement).click();
+			        	break;
+			        }
+			    }		
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
-	public void tipoComprobante() {
-		List<WebElement> lists13 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch13 = new TouchAction<>(driver);
-		touch13.press(PointOption.point(131,1092));
-		touch13.release();
-		touch13.perform();
-		
-	}
-	
+	/*
 	public void fotoComprobDomicilio() {
 		List<WebElement> lists14 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery"));
 		TouchAction touch14 = new TouchAction<>(driver);
@@ -255,7 +492,7 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		touch14.release();
 		touch14.perform();
 		
-	}
+	}*/
 	
 	public void fotoConstPatrimonio() {
 		List<WebElement> lists14p = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery"));
@@ -266,66 +503,43 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		
 	}
 	
-	/*
-	public void casaHabita() {
-		List<WebElement> lists15 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch15 = new TouchAction<>(driver);
-		touch15.press(PointOption.point(67,825)); //69,915
-		touch15.release();
-		touch15.perform();
-		
-	}*/
-	
-	/*// Cuando no tenia lista
-	public void casaHabita() {
-		List<WebElement> lists15 = driver.findElements(By.className("android.widget.EditText"));
-		System.out.println("Count dropdown:"+lists15.size());
-        for(WebElement e:lists15)
-        {
-            String val=e.getText();
-    		System.out.println("casa dropdown:"+val);
-           
-            if(val.equalsIgnoreCase("DE FAMILIARES"))  	
-            	
-            {
-                e.click();
-                break;
-            }
-        }
-		
-	}*/
-	
 	//DE CONSULTA EXTERNO
-	
 	public void casaHabita() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	//	List<WebElement> elementsx = driver.findElements(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"android:id/text1\")"));   
-	//	List<MobileElement> allCheckBoxes=(List<MobileElement>) driver.findElements(By.xpath("//*[@class='android.widget.EditText']"));
-		List<MobileElement> allListText=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		List<MobileElement> allListText=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		for (MobileElement webElementmobileElement : allListText) {
-			//System.out.println(webElementmobileElement);
-		        System.out.println(((WebElement) webElementmobileElement).getText());
+		//	System.out.println(webElementmobileElement); //
+		 //       System.out.println(((WebElement) webElementmobileElement).getText());
 		        String chab = ((WebElement) webElementmobileElement).getText();
 		        if(chab.equals("OTRO")){
+		        	((WebElement) webElementmobileElement).click();
+		        //		casah = ((WebElement) webElementmobileElement).getText();
+		        	break;
+		        }
+		        casah = ((WebElement) webElementmobileElement).getText();
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+	}
+	
+	public void numPersonas() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListNpers=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListNpers) {
+			//System.out.println(webElementmobileElement); //
+		      //  System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("2")){
 		        	((WebElement) webElementmobileElement).click();
 		        	break;
 		        }
 		    }		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
 	}
 	
-	public void numPersonas() {
-		List<WebElement> lists16 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch16 = new TouchAction<>(driver);
-		touch16.press(PointOption.point(121,1225));
-		touch16.release();
-		touch16.perform();
-	}
-	
+	/*
 	public void departament() {
 		List<WebElement> lists17 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
 		TouchAction touch17 = new TouchAction<>(driver);
@@ -333,57 +547,208 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		touch17.release();
 		touch17.perform();
 		
-	}
+	}*/
 	
 	public void provincia() {
-		List<WebElement> lists18 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch18 = new TouchAction<>(driver);
-		touch18.press(PointOption.point(728	,705));//684
-		touch18.release();
-		touch18.perform();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListProv=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListProv) {
+		//	System.out.println(webElementmobileElement); //
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("LIMA")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	public void distrito() {
-		List<WebElement> lists19 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch19 = new TouchAction<>(driver);
-		touch19.press(PointOption.point(108,865));
-		touch19.release();
-		touch19.perform();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListDistri=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListDistri) {
+		//	System.out.println(webElementmobileElement); //
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("LIMA")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	public void tipoviac() {
-		List<WebElement> lists20x = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch20x = new TouchAction<>(driver);
-		touch20x.press(PointOption.point(110,1170));
-		touch20x.release();
-		touch20x.perform();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListVia=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListVia) {
+		//	System.out.println(webElementmobileElement); //
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("Calle")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	public void permanenciaanios() {
-		List<WebElement> lists21 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch21 = new TouchAction<>(driver);
-		touch21.press(PointOption.point(701,1143));
-		touch21.release();
-		touch21.perform();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListPermanen=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListPermanen) {
+		//	System.out.println(webElementmobileElement); //
+		  //      System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("2")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 
 	public void tiporeferencia() {
-		List<WebElement> lists22 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch22 = new TouchAction<>(driver);
-		touch22.press(PointOption.point(117,1124));
-		touch22.release();
-		touch22.perform();	
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListTipRef=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListTipRef) {
+		    //    System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals("AMIGO (A)")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
+	public void tipdoc() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListEntidadB=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListEntidadB) {
+		      //  System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals("DNI")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
+	}
+	
+	public void genderCy(String dgender) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListGendercy=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListGendercy) {
+		       // System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals(dgender)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
+	}
+	
+	public void fnacCy(String dfecna) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListFecna=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListFecna) {
+		       // System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals(dfecna)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
+	}
+	
+	public void gradoinsCy(String dginstruc) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListGinst=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListGinst) {
+		        //System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals(dginstruc)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
+	}
+	
+	public void ocupacCy(String docupac) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListOcupac=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListOcupac) {
+		        //System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals(docupac)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
+	}
+	
+	public void tipodoctrCy(String dtdoctr) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListTipDoctr=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListTipDoctr) {
+		        //System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals(dtdoctr)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
+	}
+	
+	//tipodociletrado
+	public void tipodocIletr(String tdoctrIl) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListTipDocilt=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListTipDocilt) {
+		        //System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals(tdoctrIl)){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	
+	}
+	
+	
 	// esta funcionando ok desplazamiento de departamento
+	/*
 	public void departament1() {
 		List<WebElement> lists17 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
 		TouchAction action = new TouchAction(driver); 
@@ -392,305 +757,574 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
         action.release();
         action.perform();
 		
+	}*/
+	
+	public void departament2() {		
+		List<WebElement> lists17 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));	
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    	PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+    	Sequence swipe = new Sequence(FINGER, 1)
+    	.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 145, 1140))
+        .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+        .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),145, 670))
+        .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(swipe));
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListDepa=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListDepa) {
+		//	System.out.println(webElementmobileElement); //
+		 //       System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("LIMA")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
 	}
 	
-	public void departament2() {
-		List<WebElement> lists17 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction action = new TouchAction(driver); 
-        action.press(PointOption.point(145, 1140)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(7))) //(70, 1097)
-                        .moveTo(PointOption.point(145, 670));  //(70, 800)
-        action.release();
-        action.perform();
-        
-		TouchAction touch17 = new TouchAction<>(driver);
-		touch17.press(PointOption.point(104,1150));  //(70,1103)
-		touch17.release();
-		touch17.perform();
+	
+	public void fotoIletrados () {
+	/*	List<WebElement> listsIl = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	 
+		TouchAction touchIl = new TouchAction<>(driver);
+		touchIl.press(PointOption.point(341,255));
+		touchIl.release();
+		touchIl.perform();*/
+		
+		List<WebElement> listsIl = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
+		
+	}
+	
+	public void metod () {
+		//List<WebElement> listsIl = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	 
+		TouchAction touchIl = new TouchAction<>(driver);
+		touchIl.press(PointOption.point(566,1279));
+		touchIl.release();
+		touchIl.perform();
 		
 	}
 	
 	//Business
 	public void fotoExpir() {
 		List<WebElement> lists23 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	 
-		TouchAction touch23 = new TouchAction<>(driver);
-		touch23.press(PointOption.point(341,255));
-		touch23.release();
-		touch23.perform();
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	public void timeFuncAnios() {
-		List<WebElement> lists12 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch12 = new TouchAction<>(driver);
-		touch12.press(PointOption.point(84,1402));
-		touch12.release();
-		touch12.perform();
+		List<WebElement> lists12 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 84, 1402));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	public void experAnios() {
 		List<WebElement> lists24 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch24 = new TouchAction<>(driver);
-		touch24.press(PointOption.point(704,1402));
-		touch24.release();
-		touch24.perform(); 
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 704, 1402));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	public void tipoEstabelcim() {
 		List<WebElement> lists30 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch30 = new TouchAction<>(driver);
-		touch30.press(PointOption.point(728,1581));
-		touch30.release();
-		touch30.perform(); 
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 728, 1581));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	//RSE
 	public void autocompGiro() {
-		List lists31 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/rl1"));
-		TouchAction touch31 = new TouchAction<>(driver);
-		touch31.press(PointOption.point(140,253));
-		touch31.release();
-		touch31.perform(); 
+		List lists31 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/rl1"));		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 140, 620));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 	}
 	
 	public void unidaddemedida() {
-		List<WebElement> lists1 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch1 = new TouchAction<>(driver);
-		touch1.press(PointOption.point(340,1082));
-		touch1.release();
-		touch1.perform(); 
+		List<WebElement> lists1 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 340, 1082));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
+		
 		
 	}
 	
 	public void destinoDeuda() {
-		List<WebElement> lists2 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch2 = new TouchAction<>(driver);
-		touch2.press(PointOption.point(347,826));
-		touch2.release();
-		touch2.perform(); 
+		List<WebElement> lists2 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 347, 826));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	public void fotoConsOtroIng() {
 		List<WebElement> lists33 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	 
-		TouchAction touch33 = new TouchAction<>(driver);
-		touch33.press(PointOption.point(341,255));
-		touch33.release();
-		touch33.perform();
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	public void origendeOtroIng() {
-		List<WebElement> lists35 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch35 = new TouchAction<>(driver);
-		touch35.press(PointOption.point(104,1352));//128,750
-		touch35.release();
-		touch35.perform(); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		List<MobileElement> ListOtrIngr=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListOtrIngr) {
+			//System.out.println(webElementmobileElement);
+		    //    System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chad = ((WebElement) webElementmobileElement).getText();
+		        if(chad.equals("OTRO")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	//Proposal
 	
-	public void product() {
-		List<WebElement> lists37 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch37 = new TouchAction<>(driver);
-		touch37.press(PointOption.point(128,988));//145,681  //145,721 SEGUNDO
-		touch37.release();
-		touch37.perform();
+	public void product() {	
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> allListText=(List<MobileElement>) driver.findElements(By.id("android:id/text1")); //cn este funcionaba
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : allListText) {
+		//	System.out.println(webElementmobileElement); //
+		   //     System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chab = ((WebElement) webElementmobileElement).getText();
+		        if(chab.equals("CREDITO CONSTRUYENDO SUEÑOS")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	public void destinopr() {
-		List<WebElement> lists38 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));	
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch38 = new TouchAction<>(driver);
-		touch38.press(PointOption.point(728,972));
-		touch38.release();
-		touch38.perform(); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		List<MobileElement> ListSegBasic=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListSegBasic) {
+			//System.out.println(webElementmobileElement);
+		        System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chad = ((WebElement) webElementmobileElement).getText();
+		        if(chad.equals("ACTIVO FIJO")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 
 	public void fotoPres() {
-		List<WebElement> lists23 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	 
-		TouchAction touch23 = new TouchAction<>(driver);
-		touch23.press(PointOption.point(341,255));
-		touch23.release();
-		touch23.perform();
+		List<WebElement> lists23 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	public void freccuota() {
-		List<WebElement> lists40 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListFrecCuot=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListFrecCuot) {
+		        System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chad = ((WebElement) webElementmobileElement).getText();
+		        if(chad.equals("MES(ES)")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		/*List<WebElement> lists40 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
 		driver.manage().timeouts().implicitlyWait(9000, TimeUnit.SECONDS); 
 		TouchAction touch40 = new TouchAction<>(driver);
-		touch40.press(PointOption.point(725,1409));
+		touch40.press(PointOption.point(730,1210));
 		touch40.release();
-		touch40.perform();
+		touch40.perform();*/
 		
 	}
 	
 	public void canticuota() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListCantCuot=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListCantCuot) {
+		        System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chad = ((WebElement) webElementmobileElement).getText();
+		        if(chad.equals("9")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		/*
 		List<WebElement> lists39 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
 		TouchAction touch39 = new TouchAction<>(driver);
-		touch39.press(PointOption.point(78,1122));
+		touch39.press(PointOption.point(84,1588));
 		touch39.release();
-		touch39.perform(); 
+		touch39.perform();*/
 		
 	}
 	
-	public void segurob() {
-		List<WebElement> lists42 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch42 = new TouchAction<>(driver);
-		touch42.press(PointOption.point(111,1571));
-		touch42.release();
-		touch42.perform(); 
+	public void segurob() {	
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			List<MobileElement> ListSegBasic=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			for (MobileElement webElementmobileElement : ListSegBasic) {
+			    //    System.out.println(((WebElement) webElementmobileElement).getText());
+			        String chad = ((WebElement) webElementmobileElement).getText();
+			        if(chad.equals("DESGRAV PORCENTUAL")){
+			        	((WebElement) webElementmobileElement).click();
+			        	break;
+			        }
+			    }		
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+	}
+	
+	public void seguropt() {	
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			List<MobileElement> ListSegOpt=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			for (MobileElement webElementmobileElement : ListSegOpt) {
+			        String chad = ((WebElement) webElementmobileElement).getText();
+			        if(chad.equals("SUPER SEGURO PLAN 4")){
+			        	((WebElement) webElementmobileElement).click();
+			        	break;
+			        }
+			    }		
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	public void tipodocumentoptative() {
 		List<WebElement> lists44 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch44 = new TouchAction<>(driver);
-		touch44.press(PointOption.point(334,769));
-		touch44.release();
-		touch44.perform(); 
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 334, 769));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
-	public void sueCivil() {
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		List<WebElement> lists45 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch45 = new TouchAction<>(driver);
-		touch45.press(PointOption.point(351,1399));
-		touch45.release();
-		touch45.perform(); 
+	public void sueCivil() {		
+		List<MobileElement> ListEcivi=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListEcivi) {
+			//System.out.println(webElementmobileElement);
+		        System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chad = ((WebElement) webElementmobileElement).getText();
+		        if(chad.equals("SOLTERO")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	public void suGenero() {
-		List<WebElement> lists45x = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
+	/*	List<WebElement> lists45x = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
 		TouchAction touch45x = new TouchAction<>(driver);
-		touch45x.press(PointOption.point(357,1492)); //FEMENINO
+		touch45x.press(PointOption.point(351,1106)); //FEMENINO
 		touch45x.release();
-		touch45x.perform(); 
+		touch45x.perform(); */
+		
+		List<MobileElement> ListGener=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListGener) {
+			//System.out.println(webElementmobileElement);
+		    //    System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chadg = ((WebElement) webElementmobileElement).getText();
+		        if(chadg.equals("FEMENINO")){
+		        	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
-	/*
-	public void parentesc() {
-		List<WebElement> lists46 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);  
-		TouchAction touch46 = new TouchAction<>(driver);
-		touch46.press(PointOption.point(264,897)); // arriba 250, 557
-		touch46.release();
-		touch46.perform();
-		
-	}*/
-	
 	public void scrollToTextRelation() {
-	//	driver.findElement(By.xpath("//*[@text='Parentesco']")).click(); 
-		
-	//	driver.findElement(By.id("pe.com.surgir.surgirapp:id/dialog_relationship")).click();
-		
-	//  driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"AMISTAD\"));"));
-	//	driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(textMatches(\"AMISTAD\"));"));
-		
-		//driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"pe.com.surgir.surgirapp:id/dialog_relationship\")).scrollIntoView(new UiSelector().textMatches(\"AMISTAD\").instance(0))"));
-		
-		List<WebElement> lists46 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch46 = new TouchAction<>(driver);
-		touch46.press(PointOption.point(362,1540)); // arriba 250, 557 --- abajo 264,896
-		touch46.release();
-		touch46.perform();
+		List<WebElement> lists46 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 362, 1540));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	public void seguroAsocia() {
-		List<WebElement> lists47 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/txt_view"));
+	/*	List<WebElement> lists47 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/txt_view"));
 		TouchAction touch47 = new TouchAction<>(driver);
-		touch47.press(PointOption.point(234,954));
+		touch47.press(PointOption.point(334,1460));
 		touch47.release();
-		touch47.perform(); 
+		touch47.perform(); */
+		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 334, 1460));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
-	
+		
 	//Contract
 	public void formadePago() {
-		List lists43 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		TouchAction touch43 = new TouchAction<>(driver);
-		touch43.press(PointOption.point(90,811)); //102, 827
-		touch43.release();
-		touch43.perform(); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListFpago=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListFpago) {
+			//System.out.println(webElementmobileElement);
+		      //  System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chapag = ((WebElement) webElementmobileElement).getText();
+		        if(chapag.equals("Transferencia")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 	}
 	
 	public void entidadFinanciera() {
-		List lists44 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/list"));
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
-		TouchAction touch44 = new TouchAction<>(driver);
-		touch44.press(PointOption.point(46,567));  //46, 567
-		touch44.release();
-		touch44.perform(); 
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		List<MobileElement> ListEntidadB=(List<MobileElement>) driver.findElements(By.id("android:id/text1"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		for (MobileElement webElementmobileElement : ListEntidadB) {
+			//System.out.println(webElementmobileElement);
+		        System.out.println(((WebElement) webElementmobileElement).getText());
+		        String chaent = ((WebElement) webElementmobileElement).getText();
+		        if(chaent.equals("BCP")){
+		        	((WebElement) webElementmobileElement).click();
+		        	break;
+		        }
+		    }		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	
 	}
 	
 	public void fotoCuentas() {
 		List lists45 = driver.findElements(By.id("pe.com.surgir.surgirapp:id/mark_item_gallery")); 
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	 
+	/*	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	 
 		TouchAction touch45 = new TouchAction<>(driver);
-		touch45.press(PointOption.point(229,174));
+		touch45.press(PointOption.point(341,255));
 		touch45.release();
-		touch45.perform();
+		touch45.perform();*/
+		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(FINGER, 1);
+        		swipe.addAction(FINGER.createPointerMove(ofMillis(5), viewport(), 341, 255));
+        		swipe.addAction(FINGER.createPointerDown(LEFT.asArg()));
+                swipe.addAction(FINGER.createPointerUp(LEFT.asArg()));
+        driver.perform(List.of(swipe));
 		
 	}
 	
 	//Signature
-	public void signatureCustomer() {
-	    TouchAction touchAction = new TouchAction(driver);
-	    touchAction.longPress(PointOption.point(285, 731))
-	               .moveTo(PointOption.point(448, 722))
+	public void signatureCustomer() {			
+	/*   TouchAction touchAction = new TouchAction(driver);
+	    touchAction.longPress(PointOption.point(428, 1228))
+	               .moveTo(PointOption.point(697, 1400))
 	               .release()
-	               .perform();
+	               .perform();*/
+		/*
+		 WebElement holdElement= driver.findElementById("element");
+
+		  AndroidTouchAction t = new AndroidTouchAction(driver);   
+
+		  t.longPress(LongPressOptions.longPressOptions()
+		  .withElement(ElementOption.element(holdElement))
+		  .withDuration(Duration.ofMillis(5000)))
+		  .release()
+		  .perform();*/
+		
+		TouchAction touchAction = new TouchAction(driver);
+		touchAction.longPress(PointOption.point(428, 1228))
+		           .moveTo(PointOption.point(697, 1400))
+		           .release()
+		           .perform();
+		  
+		  
+		//  long_press(element_location); 
+	/*	  PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger"); 
+		  Sequence longpress = new Sequence(finger, 1);
+		  longpress.addAction(finger.createPointerMove(Duration.ofMillis(0),PointerInput.Origin.viewport(), 428, 1228));
+		  longpress.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+		  longpress.addAction(finger.createPointerMove(Duration.ofMillis(2000),PointerInput.Origin.viewport(), 697, 1400));
+		  longpress.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));*/
+		  
+
+		  
+		//  driver.perform(Collections.singletonList(longpress));
+		  
+	    
+		/*
+    	PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+    	Sequence swipe = new Sequence(FINGER, 1)
+    	.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 428, 1228))
+        .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+        .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),697, 1400))
+        .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(swipe));*/
+		
+	    
 	}
 	
-	public void avance1() {
-		long noOfSeconds = 5;
-		Duration duration = Duration.ofSeconds(noOfSeconds);
-		TouchAction action = new TouchAction(driver); 
-        action.press(PointOption.point(560, 789)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(7)))
-                        .moveTo(PointOption.point(560, 260)).release().perform();
+	public void avance1() {		
+    	PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+    	Sequence swipe = new Sequence(FINGER, 1)
+    	.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 560, 1460))
+        .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+        .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),560, 530))
+        .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(swipe));
+        
 		
 	}
+	
+	public void avancebeneseg() {        
+    	PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+    	Sequence swipe = new Sequence(FINGER, 1)
+    	.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 500, 1268))
+        .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+        .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),50, 968))
+        .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(swipe));
+		
+	}
+	
 	
 	public void avance2() {
+		/*
 		long noOfSeconds = 5;
 		Duration duration = Duration.ofSeconds(noOfSeconds);
 		TouchAction action = new TouchAction(driver); 
-        action.press(PointOption.point(345, 860)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(7)))
-                        .moveTo(PointOption.point(345, 462)).release().perform();
+        action.longPress(PointOption.point(556, 1400)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(7)))
+                        .moveTo(PointOption.point(556, 700)).release().perform();*/
+		
+    	PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+    	Sequence swipe = new Sequence(FINGER, 1)
+    	.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 556, 1400))
+        .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+        .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),556, 700))
+        .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(swipe));
+        
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+		
+	}
+	
+	public void avance3cy() {
+		long noOfSeconds = 5;
+		Duration duration = Duration.ofSeconds(noOfSeconds);
+		TouchAction action = new TouchAction(driver); 
+        action.longPress(PointOption.point(600, 1640)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(5)))
+                        .moveTo(PointOption.point(600, 800)).release().perform();
+		
+	}
+	
+	public void avance4cy() {
+		long noOfSeconds = 5;
+		Duration duration = Duration.ofSeconds(noOfSeconds);
+		TouchAction action = new TouchAction(driver); 
+        action.longPress(PointOption.point(600, 1640)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(5)))
+                        .moveTo(PointOption.point(600, 560)).release().perform();
+		
+	}
+	
+	public void avance5casado() {
+		long noOfSeconds = 5;
+		Duration duration = Duration.ofSeconds(noOfSeconds);
+		TouchAction action = new TouchAction(driver); 
+        action.longPress(PointOption.point(580, 1600)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(7)))
+                        .moveTo(PointOption.point(580, 1103)).release().perform(); //580, 1100
+		
+	}
+	
+	public void avancersegasto() {
+		long noOfSeconds = 5;
+		Duration duration = Duration.ofSeconds(noOfSeconds);
+		TouchAction action = new TouchAction(driver); 
+        action.longPress(PointOption.point(592, 1586)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(7)))
+                        .moveTo(PointOption.point(592, 679)).release().perform(); //580, 1100
 		
 	}
 		
-	public void politics() {
+	//Capturando numero DNI
+	public String numdocdni() {
+		     WebElement nnumdniin = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
+		     this.numdoc=nnumdniin.getText(); 
+		     return numdoc;
+			
+		}
+	
+	public void segmentosdat() {
+	 //   this.nsegment = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.TextView[2]")).getText();
+	     WebElement nsegmentin = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.TextView[2]"));
+	     this.nsegment=nsegmentin.getText();
 		
-		FormProposal prospecta = new FormProposal(driver);
-		System.out.println(prospecta.segmentos());
+	}
+	
+	public void politics() {
+		System.out.println("validando casa habitacion: "+ casah); //+nproposal.segmentos()
+		System.out.println("validando segmento "+ nsegment);
+		System.out.println("Numero de DNI:" + numdoc);
 		
 		//String alerttitlenext2 = driver.findElement(By.id("android:id/content")).getText();
 	  //  System.out.println(segmento.substring(10, 1));
@@ -721,6 +1355,8 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		}*/
 	}
 	
+	
+	
 	public void swipeScreenTwoRsen() {
 		String text1 = driver.findElement(By.id("pe.com.surgir.surgirapp:id/rse_title_result_state")).getText();
 		System.out.println(text1);
@@ -734,6 +1370,8 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		String text2 = driver.findElement(By.id("pe.com.surgir.surgirapp:id/tv_title_gross_income")).getText();
 		System.out.println(text2);
 		if(text2.equals("Ingreso bruto")) {
+			swipeScreen();
+		}else {
 			swipeScreen();
 		}
 		
@@ -757,6 +1395,96 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		
 	}
 	
+	//Validaciones de Cliente
+	public void validPExperian() {
+		String pexperian = driver.findElement(By.xpath("//android.widget.ImageView[@content-desc='Surgir")).getText();
+		System.out.println(pexperian);
+	//	System.out.println(pexperian.equals("Surgir"));
+		
+	/*	if(pexperian.isEmpty()) {
+			//Assert.assertEquals(ddirecta, "vacio");
+			System.out.println("Falta foto experian");
+		}else {
+			System.out.println("foto experian cargado");
+		}*/
+	}
+	
+	//Validaciones de propuesta 
+	public void validResponsabilidad() {
+	//	String mountPrestamo = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText")).getText();
+	//	String mountPrestamo = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout[3]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText")).getText();
+		String mountPrestamo = driver.findElement(By.xpath("//android.widget.EditText[@hint='Monto del prestamo']")).getText();
+		System.out.println("Monto de prestamo:"+mountPrestamo);
+		//	String avdirecto =    driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.view.ViewGroup[1]/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText")).getText();
+	//	WebElement deudirecta = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.view.ViewGroup[1]/android.widget.RelativeLayout[1]/android.widget.TextView[3]"));
+		WebElement deudirecta = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout[3]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[4]/android.view.ViewGroup[1]/android.widget.RelativeLayout[1]/android.widget.TextView[3]"));
+	//	WebElement resptotal = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[3]/android.view.ViewGroup[2]/android.widget.RelativeLayout/android.widget.TextView[3]"));
+		WebElement resptotal = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout[3]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[4]/android.view.ViewGroup[2]/android.widget.RelativeLayout/android.widget.TextView[3]"));
+		//System.out.println("A:"+mountPrestamo);
+		//System.out.println("AA:"+deudirecta);
+		//System.out.println("AAA:"+resptotal);
+		
+		/*
+		double dmountPrestamo = Double.parseDouble(mountPrestamo); 
+	//	double avaldirecto = Double.parseDouble(avdirecto); 
+		String cdeudadirecta = deudirecta.getText();
+		String responstotal = resptotal.getText();
+		
+		String deudadirecta = cdeudadirecta.replace(",", "");
+		double ndeudadirecta = Double.valueOf(deudadirecta.substring(0, deudadirecta.length()-2));
+
+		String responsabtotal = responstotal.replace(",", "");
+		double nresponsabtotal = Double.valueOf(responsabtotal.substring(0, responsabtotal.length()-2));
+		
+		Double resptotalcalc = dmountPrestamo;//+avaldirecto;
+		
+		System.out.println("A:"+dmountPrestamo);
+	//	System.out.println("B:"+avaldirecto);
+		System.out.println("C:"+ndeudadirecta);
+		System.out.println("D:"+nresponsabtotal);
+		
+		System.out.println("E:"+resptotalcalc); // entero
+*/
+		
+	//	Assert.assertEquals(nresponsabtotal, resptotalcalc);
+		
+	//	if(ddirecta.contains("")) {
+		//	Assert.assertEquals(ddirecta, "vacio");
+			
+	//	}
+	}
+	
+	public void pdownone() {
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		Sequence swipe = new Sequence(FINGER, 1)
+		.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 540, 1315))
+	    .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+	    .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),540, 380))//540, 380
+	    .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+	    driver.perform(Arrays.asList(swipe));
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
+	}
+	
+
+	public void swipeScreen2() {
+		Dimension dim = driver.manage().window().getSize();
+		int height = dim.getHeight();
+		int width = dim.getWidth();
+		
+		int startx=width/2;
+		int endx=width/2;
+		int starty=(int) (height*.45);
+		int endy= (int) (height*.10);
+		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		Sequence swipe = new Sequence(FINGER, 1)
+		.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startx, starty))
+	    .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+	    .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),endx, endy))
+	    .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+	    driver.perform(Arrays.asList(swipe));
+	}
+	
 	@Test
 	public void swipeScreen() {
 		Dimension dim = driver.manage().window().getSize();
@@ -765,14 +1493,22 @@ public class AndroidActions<W3cActions, AndroidElement, MobileElement> {
 		
 		int startx=width/2;
 		int endx=width/2;
-		int starty=(int) (height*.40);
+		int starty=(int) (height*.40);//40
 		int endy= (int) (height*.10);
 		
-		TouchAction action = new TouchAction(driver);
+	/*	TouchAction action = new TouchAction(driver);
 		action.press(PointOption.point(startx, starty))
 		.moveTo(PointOption.point(endx, endy))
 		.release()
-		.perform();
+		.perform();*/
+		
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		Sequence swipe = new Sequence(FINGER, 1)
+		.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startx, starty))
+	    .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+	    .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),endx, endy))
+	    .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+	    driver.perform(Arrays.asList(swipe));
 		
 	}
 	

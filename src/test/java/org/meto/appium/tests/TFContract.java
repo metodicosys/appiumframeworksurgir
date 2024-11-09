@@ -38,7 +38,7 @@ public class TFContract extends TestBase{
 	}
 	
 	@Test
-	public void FillContract() throws InterruptedException{
+	public void TestContract() throws InterruptedException{
 		//FormProspect formProspect = formPage.localButtom();
 		FormContract formContract = new FormContract(driver);
 		
@@ -51,6 +51,7 @@ public class TFContract extends TestBase{
 		formContract.linkagePolice();
 		formContract.comment("Conforme");
 		formContract.saveContract();
+		
 		FormSignature formSignature = formContract.nextContract();
 		
 

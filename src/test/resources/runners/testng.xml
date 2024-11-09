@@ -10,6 +10,12 @@
 			<class name="org.meto.appium.tests.TFLogin" />
 		</classes>
 	</test> <!-- Test -->
+	
+	<test name="Test API">
+		<classes>
+			<class name="org.meto.api.endpoints.CaptureRequest" />
+		</classes>
+	</test> <!-- Test -->
 
 	 <test name="Prospect Test"> 
 		<classes> 
@@ -22,12 +28,13 @@
 			<class name="org.meto.appium.tests.TFCustomer" /> 
 		</classes> 
 	</test>   <!-- Test -->
-	
+
+
 	<test name="Business Test"> 
 		<classes> 
 			<class name="org.meto.appium.tests.TFBusiness" /> 
 		</classes> 
-	</test>   <!-- Test -->
+	</test>  <!-- Test -->
 	
 	<test name="Rse Test"> 
 		<classes> 
@@ -52,18 +59,18 @@
 			<class name="org.meto.appium.tests.TFSignature" /> 
 		</classes> 
 	</test>   <!-- Test -->
-	
+	<!--
 	<test name="Guarantor Test"> 
 		<classes> 
 			<class name="org.meto.appium.tests.TFGuarantor" /> 
 		</classes> 
-	</test>   <!-- Test -->
-	
+	</test>-->   <!-- Test -->
+	<!--
 	<test name="Customer Guarantor Test"> 
 		<classes> 
 			<class name="org.meto.appium.tests.TFCustomerGuarantor" /> 
 		</classes> 
-	</test>  <!-- Test -->
+	</test>-->  <!-- Test -->
 
 	<!-- <test name="Open Account Test"> <classes> <class name="com.m2a.testcases.OpenAccountTest" 
 		/> </classes> </test> -->   <!-- Test -->

@@ -27,45 +27,33 @@ public class FormContract extends AndroidActions{
 
 	}
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/list")).click();
-	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/list")
+	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Tipo de desembolso']")
 	private WebElement fpago;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Entidad bancaria']")).click(); 
-	@AndroidFindBy(xpath="//android.widget.EditText[@text='Entidad bancaria']")
+	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Entidad bancaria']")
 	private WebElement entFinan;
 	
-	//driver.findElement(By.xpath("//android.widget.TextView[@text='Comprobante de cuenta']")).click();
 	@AndroidFindBy(xpath="//android.widget.TextView[@text='Comprobante de cuenta']")
 	private WebElement fotoCuen;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Número de cuenta']")).sendKeys("1111000002222");	
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Número de cuenta']")
 	private WebElement numcuen;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Código de cuenta interbancario']")).sendKeys("10101010101010101010");	
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Código de cuenta interbancario']")
 	private WebElement cinterb;
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/chkLink")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/chkLink")
 	private WebElement check1;
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/etInputGeneral")).sendKeys("Conforme");
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/etInputGeneral")
 	private WebElement coment;
 	
-	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnFormBusinessSave")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnFormBusinessSave")
 	private WebElement savecontr;
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnFormBusinessNext")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnFormBusinessNext")
 	private WebElement nextcontr;
 	
-	
-	//Botón Listo de galeria
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/button_gallery_listo")
 	private WebElement nListo;
 
@@ -73,7 +61,7 @@ public class FormContract extends AndroidActions{
 	
 	public FormContract formaPago() throws InterruptedException {
 		fpago.click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		formadePago();
 		return this;
 

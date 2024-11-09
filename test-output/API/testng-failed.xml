@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Api]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test API Estado Civil(failed)">
+    <classes>
+      <class name="org.meto.api.endpoints.EndPointCatalogs_ecivil">
+        <methods>
+          <include name="CatalogEcivil"/>
+        </methods>
+      </class> <!-- org.meto.api.endpoints.EndPointCatalogs_ecivil -->
+    </classes>
+  </test> <!-- Test API Estado Civil(failed) -->
+  <test thread-count="5" name="Test API Tasa(failed)">
+    <classes>
+      <class name="org.meto.api.endpoints.EndPointRuleTasa">
+        <methods>
+          <include name="RuleTasa"/>
+        </methods>
+      </class> <!-- org.meto.api.endpoints.EndPointRuleTasa -->
+    </classes>
+  </test> <!-- Test API Tasa(failed) -->
+  <test thread-count="5" name="Test API Buscar cliente(failed)">
+    <classes>
+      <class name="org.meto.api.endpoints.EndPointFoundCustomerDni">
+        <methods>
+          <include name="NaturalPerson"/>
+        </methods>
+      </class> <!-- org.meto.api.endpoints.EndPointFoundCustomerDni -->
+    </classes>
+  </test> <!-- Test API Buscar cliente(failed) -->
+  <test thread-count="5" name="Test API Experian(failed)">
+    <classes>
+      <class name="org.meto.api.endpoints.EndPointThirdPartyQualificationPST_S6">
+        <methods>
+          <include name="Experian"/>
+        </methods>
+      </class> <!-- org.meto.api.endpoints.EndPointThirdPartyQualificationPST_S6 -->
+    </classes>
+  </test> <!-- Test API Experian(failed) -->
+</suite> <!-- Failed suite [Api] -->

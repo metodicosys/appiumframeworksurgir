@@ -1,16 +1,22 @@
 package org.meto.appium.pages;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.meto.appium.utils.AndroidActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 //import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
+import io.appium.java_client.AppiumBy;
 //import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 //import io.appium.java_client.MobileElement;
@@ -23,6 +29,7 @@ import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobilePlatform;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+
 
 public class FormProspect extends AndroidActions{
 	
@@ -43,8 +50,13 @@ public class FormProspect extends AndroidActions{
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/icon_return_home")
 	private WebElement returnH;
 	
+	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnNuevaPropuesta")
+	private WebElement btnPropuest;
+	
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnPropuestaHome")
 	private WebElement propuestaHome;
+	
+	
 	
 	//Prospecto
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Número de documento']")
@@ -56,28 +68,38 @@ public class FormProspect extends AndroidActions{
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/component_datetime_input")
 	private WebElement fecCaducidad;
 	
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
+	//@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Primer nombre']")
 	private WebElement firstName;
 	
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
+	//@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Segundo nombre']")
 	private WebElement secondName;
 	
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
+	//@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Apellido paterno']")
 	private WebElement firstSurname;
 	
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
+	//@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Apellido materno']")
 	private WebElement secondSurname;
 	
-	@AndroidFindBy(xpath="	/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[5]/android.widget.FrameLayout/android.widget.EditText")
+	//@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Fecha de Nacimiento']")
 	private WebElement FecNa;
 		
 	//Teléfono
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
-	private WebElement nMobile;	
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Celular']")
+	//@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")	
+	                  //    /hierarchy/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText
+	private WebElement nMobile;	//	android.widget.EditText   //Celular
 	
 	//Correo
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
-	private WebElement  nMail;
+	
+	@AndroidFindBy(xpath="//android.widget.EditText[@hint='Correo electrónico personal']")
+//	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
+	                 //      /hierarchy/android.widget.FrameLayout[3]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText
+	private WebElement  nMail;  //Correo electrónico personal
 	
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btn_submit_prospect")
 	private WebElement btnContinuarProspect;
@@ -85,15 +107,25 @@ public class FormProspect extends AndroidActions{
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/positive_radio_button")
 	private WebElement checkData;
 		
-	@AndroidFindBy(xpath="//android.widget.Button[@text='Continuar']")
+	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/audp_button_continue")
 	private WebElement btnContinuarData;
 	
 	//segmento en prospecto
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/id_segment")
 	private WebElement segmentito;
 	
-	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/summary_button_continue")
+	//Validacion de prospecto
+	@AndroidFindBy (xpath="//hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.ScrollView/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout/androidx.appcompat.widget.LinearLayoutCompat")
+	private WebElement mssgeBuro;// de buro
+	
+	@AndroidFindBy(xpath="//android.widget.Button[@text='Continuar'][@enabled = 'true']")
 	private WebElement btnContinuarValid;
+	
+	//Para validar campos de propecto
+//AndroidFindBy(xpath="//android.widget.TextView[@text='El nombre ingresado no es válido']")
+//rivate WebElement validFirstName;
+	
+	
 	
 	public FormProspect PropuestaButton() {
 		propuesta.click();
@@ -105,6 +137,11 @@ public class FormProspect extends AndroidActions{
 		returnH.click();
 		return this;
 		
+	}
+	
+	public FormProspect btnPropuesta () {
+		btnPropuest.click();
+		return this;
 	}
 	
 	public FormProspect PropuestaHome() {
@@ -130,20 +167,27 @@ public class FormProspect extends AndroidActions{
 		return this;
 		
 	}
-	
-	
-	public FormProspect setFecCaducidad(String feccaducidad) {
+		
+	public FormProspect setFecCaducidad(String feccaducidad) throws InterruptedException {
 		fecCaducidad.sendKeys(feccaducidad);
+		Thread.sleep(1000);
 		return this;
 		
 	}
 	
+	/*
 	public FormProspect setFirstName(String firstname) {
 		firstName.clear();
 		firstName.sendKeys(firstname);
+		if(firstname.equals("Automat Teste")) {
+			System.out.println("Primer nombre correcto");
+		}else {
+			System.out.println("Primer nombre incorrecto");
+		}
+		Assert.assertEquals(firstname, "Automat Teste");
 		return this;
 		
-	}
+	}*/
 	
 	public FormProspect setSecondName(String secondname) {
 		secondName.clear();
@@ -158,12 +202,46 @@ public class FormProspect extends AndroidActions{
 
 	}
 	
-	public FormProspect avance() {
-		long noOfSeconds = 5;
-		Duration duration = Duration.ofSeconds(noOfSeconds);
-		TouchAction action = new TouchAction(driver); 
-        action.press(PointOption.point(560, 789)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(7)))
-                        .moveTo(PointOption.point(560, 260)).release().perform();
+	public FormProspect pdown() {
+        pdownone();
+		return this;
+		
+	}
+	
+	
+	public FormProspect avance(){
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); 
+		PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+    	Sequence swipe = new Sequence(FINGER, 1)
+    	.addAction(FINGER.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), 560, 1200))
+        .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+        .addAction(FINGER.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),560, 1000))
+        .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(swipe));
+	    return this;
+	    
+	}
+	
+	public FormProspect setFirstName(String firstname) throws InterruptedException {
+		firstName.clear();
+		firstName.sendKeys("El nombre ingresado");
+		System.out.println(firstName.getText());
+		String textname = firstName.getText();
+		Assert.assertEquals(textname,"El nombre ingresado");
+		firstName.clear();
+		
+		Thread.sleep(1000);
+		firstName.sendKeys(firstname);
+		return this;
+		
+	}
+	
+	
+	public FormProspect setCleardata1() {
+		secondSurname.clear();
+		//FecNa.clear();
+		nMobile.clear();
+		nMail.clear();
 		return this;
 		
 	}
@@ -182,17 +260,40 @@ public class FormProspect extends AndroidActions{
 		
 	}
 	
-	public FormProspect setnMobile(String nmobile) {
+	public FormProspect setnMobile(String nmobile){
 		nMobile.clear();
 		nMobile.sendKeys(nmobile);
 		return this;
 		
 	}
 	
-	
 	public FormProspect setnMail(String mail) {
+		//nMail.click();
 		nMail.clear();
 		nMail.sendKeys(mail);
+		return this;
+		
+	}
+	
+	/*
+	public FormProspect validProspect() throws InterruptedException {
+	//	fecCaducidad.sendKeys(feccaducidad);
+		firstName.clear();
+		btnContinuarProspect.click();
+		System.out.println(validFirstName.getText());
+		Assert.assertEquals(validFirstName.getText(), "El nombre ingresado no es válido");
+		Thread.sleep(1000);
+		return this;
+		
+	}*/
+	
+	public FormProspect btnContinaur1() throws InterruptedException {
+	//	fecCaducidad.sendKeys(feccaducidad);
+	//	firstName.clear();
+		btnContinuarProspect.click();
+	//	System.out.println(validFirstName.getText());
+	//	Assert.assertEquals(validFirstName.getText(), "El nombre ingresado no es válido");
+		Thread.sleep(1000);
 		return this;
 		
 	}
@@ -203,9 +304,17 @@ public class FormProspect extends AndroidActions{
 		
 	}
 	
-	public FormProspect scrollData() {
+	public FormProspect scrollData() throws InterruptedException {
 		scrolluseData();
+		Thread.sleep(1000);
 		checkData.click();
+		return this;
+		
+	}
+	
+	public FormProspect validBuro() {
+		String toastMessageburo = mssgeBuro.getAttribute("name");
+		Assert.assertEquals(toastMessageburo, "- No apto por no aprobar la calificación de los ultimos 6 meses en SBS");
 		return this;
 		
 	}
@@ -215,12 +324,16 @@ public class FormProspect extends AndroidActions{
 		return this;
 		
 	}
+	
+	public FormProspect continuaValid() throws InterruptedException {
+		btnContinuarValid.click();
+		return this;
+		
+	}
 		
 	public FormCustomer bcontinuarValid() throws InterruptedException {
-		String segmento = driver.findElement(By.id("pe.com.surgir.surgirapp:id/id_segment")).getText();
-		System.out.println(segmento);
-	//	btnContinuarValid.isEnabled();
-		btnContinuarValid.click();
+		Thread.sleep(5000);
+		metod();
 		return new FormCustomer(driver);
 		
 	}

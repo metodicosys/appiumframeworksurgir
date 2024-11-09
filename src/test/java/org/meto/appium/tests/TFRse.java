@@ -2,6 +2,9 @@
   package org.meto.appium.tests;
   
   import org.testng.annotations.Test;
+
+import junit.framework.Assert;
+
 import java.lang.reflect.Method;
   
   import org.meto.appium.base.TestBase; import
@@ -36,13 +39,12 @@ import org.meto.appium.pages.FormProspect; import
   
   }
   
-  @Test public void FillRse() throws InterruptedException{ 
-	  //FormProspect formProspect = formPage.localButtom(); 
-	//  FormRse formRse = formBusiness.nextBusiness();
+  @Test public void Rse() throws InterruptedException{ 
 	  FormRse formRse = new FormRse(driver);
 	  
 	  formRse.autoComplit(); 
-	  formRse.giro("VE"); 
+	  formRse.giro("VE");
+	  formRse.swipeScreenOneRse();
 	  formRse.activeC1("10");
 	  formRse.activeC2("15"); 
 	  formRse.activeC3("20"); 
@@ -50,14 +52,14 @@ import org.meto.appium.pages.FormProspect; import
 	  formRse.activeC5("30"); 
 	  formRse.activeC6("35"); 
 	  formRse.activeC7("40");
-	  formRse.swipeScreenOneRse(); 
+	  formRse.swipeScreenOneRse();
 	  formRse.activeC8("45");
 	  formRse.activeC9("50");
 	  formRse.activeC10("55");
 	  formRse.activeC11("60");
 	  formRse.activeC12("65");
-	  formRse.swipeScreenOneRse(); 
-	  formRse.swipeScreenOneRse(); 
+	  formRse.swipeScreenOneRse();
+//	  formRse.saveBusiness();
 	  formRse.pasivoC1("21");
 	  formRse.pasivoC2("22");
 	  formRse.pasivoC3("23");
@@ -71,8 +73,9 @@ import org.meto.appium.pages.FormProspect; import
 	  formRse.product("AVENA");
 	  formRse.unidMeasure();
 	  formRse.btnproduct();
-	  formRse.swipeScreenTwoRse();
-	  formRse.saveBusiness();
+	  formRse.swipeScreenOneRse();
+	//  formRse.swipeScreenTwoRse();
+	//  formRse.saveBusiness();
 	  formRse.swipeScreenOneRse();
 	  formRse.btnExpenses();
 	  formRse.destinydebt();
@@ -81,35 +84,39 @@ import org.meto.appium.pages.FormProspect; import
 	  formRse.balanceCap("500");
 	  formRse.quotaValue("250");
 	  formRse.feeamount("8");
-	//  formRse.swipeScreenOneRse();
 	  formRse.payment("6");
 	//  formRse.btnproduct();
 	  formRse.saveExpense();
-	  formRse.swipeScreenTreeRse();
-	  formRse.saveBusiness();
 	  formRse.swipeScreenOneRse();
+	  formRse.saveBusiness();
+	//  formRse.nextheigh(); // avanza despues de registro de gasto
+	//  formRse.swipeScreenOneRse();
 	  formRse.expensePersonal("10");
 	  formRse.rent("10");
 	  formRse.transport("10");
 	  formRse.maintenance("10");
 	  formRse.otherServices("10");
 	  formRse.swipeScreenOneRse();
+//	  formRse.swipeScreenOneRse();
 	  formRse.feeding("15");
 	  formRse.salud("15");
 	  formRse.alquiler("15");
 	  formRse.servicioPublico("15");
+	  formRse.swipeScreenOneRse();
 	  formRse.educacion("15");
 	  formRse.transportes("15");
-	  formRse.swipeScreenOneRse();
 	  formRse.entretenimiento("20");
 	  formRse.swipeScreenOneRse();
 	  formRse.btnotroingreso();
-	  formRse.swipeScreenOneRse();
 	  formRse.otroIngreso("300");
 	  formRse.fotoConstIngreso();
 	  formRse.origenOtroIngreso();
 	  formRse.saveBusiness();
 	  formRse.btnNextRse();
+	  
+		//  double primersum  = formRse.getProductsSum();
+		//  double displaysum  = formRse.getTotalAmount();
+		//  Assert.assertEquals(displaysum, displaysum);
 	  
 	  
   }

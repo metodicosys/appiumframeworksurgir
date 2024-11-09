@@ -1,208 +1,335 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="10" passed="0" failed="0" skipped="10">
+<testng-results ignored="0" total="13" passed="0" failed="0" skipped="13">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-10T18:48:02 PET" name="Data Driven Basics" finished-at="2023-10-10T18:48:03 PET" duration-ms="590">
+  <suite started-at="2024-11-06T09:53:14 COT" name="Data Driven Basics" finished-at="2024-11-06T09:53:15 COT" duration-ms="880">
     <groups>
     </groups>
-    <test started-at="2023-10-10T18:48:02 PET" name="App Manager Login Test" finished-at="2023-10-10T18:48:02 PET" duration-ms="40">
+    <test started-at="2024-11-06T09:53:14 COT" name="App Manager Login Test" finished-at="2024-11-06T09:53:14 COT" duration-ms="201">
       <class name="org.meto.appium.tests.TFLogin">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFLogin@7d9f158f]" started-at="2023-10-10T18:48:02 PET" name="beforeMethod" finished-at="2023-10-10T18:48:02 PET" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFLogin@2d6764b2]" started-at="2024-11-06T09:53:14 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904794849" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="FillForm()[pri:0, instance:org.meto.appium.tests.TFLogin@7d9f158f]" started-at="2023-10-10T18:48:02 PET" name="FillForm" finished-at="2023-10-10T18:48:02 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillForm -->
-      </class> <!-- org.meto.appium.tests.TFLogin -->
-    </test> <!-- App Manager Login Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Prospect Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="4">
-      <class name="org.meto.appium.tests.TFProspect">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFProspect@1787f2a0]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillProspect()[pri:0, instance:org.meto.appium.tests.TFProspect@1787f2a0]" started-at="2023-10-10T18:48:03 PET" name="FillProspect" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillProspect -->
-      </class> <!-- org.meto.appium.tests.TFProspect -->
-    </test> <!-- Prospect Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Customer Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="4">
-      <class name="org.meto.appium.tests.TFCustomer">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFCustomer@35a3d49f]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillCustomer()[pri:0, instance:org.meto.appium.tests.TFCustomer@35a3d49f]" started-at="2023-10-10T18:48:03 PET" name="FillCustomer" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillCustomer -->
-      </class> <!-- org.meto.appium.tests.TFCustomer -->
-    </test> <!-- Customer Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Business Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="5">
-      <class name="org.meto.appium.tests.TFBusiness">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFBusiness@7b50df34]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillBusiness()[pri:0, instance:org.meto.appium.tests.TFBusiness@7b50df34]" started-at="2023-10-10T18:48:03 PET" name="FillBusiness" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillBusiness -->
-      </class> <!-- org.meto.appium.tests.TFBusiness -->
-    </test> <!-- Business Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Rse Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="6">
-      <class name="org.meto.appium.tests.TFRse">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFRse@1e13529a]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillRse()[pri:0, instance:org.meto.appium.tests.TFRse@1e13529a]" started-at="2023-10-10T18:48:03 PET" name="FillRse" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillRse -->
-      </class> <!-- org.meto.appium.tests.TFRse -->
-    </test> <!-- Rse Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Proposal Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="4">
-      <class name="org.meto.appium.tests.TFProposal">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFProposal@e25951c]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillProposal()[pri:0, instance:org.meto.appium.tests.TFProposal@e25951c]" started-at="2023-10-10T18:48:03 PET" name="FillProposal" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillProposal -->
-      </class> <!-- org.meto.appium.tests.TFProposal -->
-    </test> <!-- Proposal Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Contract Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="5">
-      <class name="org.meto.appium.tests.TFContract">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFContract@4b2c5e02]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillContract()[pri:0, instance:org.meto.appium.tests.TFContract@4b2c5e02]" started-at="2023-10-10T18:48:03 PET" name="FillContract" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillContract -->
-      </class> <!-- org.meto.appium.tests.TFContract -->
-    </test> <!-- Contract Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Signature Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="4">
-      <class name="org.meto.appium.tests.TFSignature">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFSignature@5e17553a]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillSignature()[pri:0, instance:org.meto.appium.tests.TFSignature@5e17553a]" started-at="2023-10-10T18:48:03 PET" name="FillSignature" finished-at="2023-10-10T18:48:03 PET" duration-ms="1" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillSignature -->
-      </class> <!-- org.meto.appium.tests.TFSignature -->
-    </test> <!-- Signature Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Guarantor Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="5">
-      <class name="org.meto.appium.tests.TFGuarantor">
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFGuarantor@43015c69]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="FillGuarantor()[pri:0, instance:org.meto.appium.tests.TFGuarantor@43015c69]" started-at="2023-10-10T18:48:03 PET" name="FillGuarantor" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillGuarantor -->
-      </class> <!-- org.meto.appium.tests.TFGuarantor -->
-    </test> <!-- Guarantor Test -->
-    <test started-at="2023-10-10T18:48:03 PET" name="Customer Guarantor Test" finished-at="2023-10-10T18:48:03 PET" duration-ms="4">
-      <class name="org.meto.appium.tests.TFCustomerGuarantor">
-        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:org.meto.appium.tests.TFCustomerGuarantor@13bc8645]" started-at="2023-10-10T18:48:02 PET" name="setup" finished-at="2023-10-10T18:48:02 PET" duration-ms="98" status="FAIL">
+        <test-method signature="Login(java.util.HashMap)[pri:0, instance:org.meto.appium.tests.TFLogin@2d6764b2]" started-at="2024-11-06T09:53:14 COT" name="Login" data-provider="getData" finished-at="2024-11-06T09:53:14 COT" duration-ms="0" status="SKIP">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1f6c9cd8]]>
+                <![CDATA[{password=Surgir.2026, usuario=asesorqa}]]>
               </value>
             </param>
           </params>
-          <exception class="java.lang.NoSuchMethodError">
-            <message>
-              <![CDATA['void org.openqa.selenium.remote.http.ClientConfig.<init>(java.net.URI, java.time.Duration, java.time.Duration, org.openqa.selenium.remote.http.Filter, java.net.Proxy, org.openqa.selenium.Credentials)']]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NoSuchMethodError: 'void org.openqa.selenium.remote.http.ClientConfig.<init>(java.net.URI, java.time.Duration, java.time.Duration, org.openqa.selenium.remote.http.Filter, java.net.Proxy, org.openqa.selenium.Credentials)'
-at io.appium.java_client.AppiumClientConfig.<init>(AppiumClientConfig.java:62)
-at io.appium.java_client.AppiumClientConfig.defaultConfig(AppiumClientConfig.java:79)
-at io.appium.java_client.remote.AppiumCommandExecutor.<init>(AppiumCommandExecutor.java:109)
-at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:101)
-at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:113)
-at org.meto.appium.base.TestBase.setup(TestBase.java:59)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-at java.base/java.lang.reflect.Method.invoke(Method.java:577)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:376)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NoSuchMethodError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="FillCustomerGuarantor()[pri:0, instance:org.meto.appium.tests.TFCustomerGuarantor@13bc8645]" started-at="2023-10-10T18:48:03 PET" name="FillCustomerGuarantor" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
-          <exception class="java.lang.NoSuchMethodError">
-            <message>
-              <![CDATA['void org.openqa.selenium.remote.http.ClientConfig.<init>(java.net.URI, java.time.Duration, java.time.Duration, org.openqa.selenium.remote.http.Filter, java.net.Proxy, org.openqa.selenium.Credentials)']]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NoSuchMethodError: 'void org.openqa.selenium.remote.http.ClientConfig.<init>(java.net.URI, java.time.Duration, java.time.Duration, org.openqa.selenium.remote.http.Filter, java.net.Proxy, org.openqa.selenium.Credentials)'
-at io.appium.java_client.AppiumClientConfig.<init>(AppiumClientConfig.java:62)
-at io.appium.java_client.AppiumClientConfig.defaultConfig(AppiumClientConfig.java:79)
-at io.appium.java_client.remote.AppiumCommandExecutor.<init>(AppiumCommandExecutor.java:109)
-at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:101)
-at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:113)
-at org.meto.appium.base.TestBase.setup(TestBase.java:59)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-at java.base/java.lang.reflect.Method.invoke(Method.java:577)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:376)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NoSuchMethodError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FillCustomerGuarantor -->
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFCustomerGuarantor@13bc8645]" started-at="2023-10-10T18:48:03 PET" name="beforeMethod" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
+        </test-method> <!-- Login -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFLogin@2d6764b2]" started-at="2024-11-06T09:53:14 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904794860" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:org.meto.appium.tests.TFCustomerGuarantor@13bc8645]" started-at="2023-10-10T18:48:03 PET" name="teardown" finished-at="2023-10-10T18:48:03 PET" duration-ms="0" status="SKIP">
+        <test-method signature="Rol()[pri:0, instance:org.meto.appium.tests.TFLogin@2d6764b2]" started-at="2024-11-06T09:53:14 COT" name="Rol" finished-at="2024-11-06T09:53:14 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Rol -->
+      </class> <!-- org.meto.appium.tests.TFLogin -->
+    </test> <!-- App Manager Login Test -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Test API" finished-at="2024-11-06T09:53:15 COT" duration-ms="0">
+    </test> <!-- Test API -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Prospect Test" finished-at="2024-11-06T09:53:15 COT" duration-ms="8">
+      <class name="org.meto.appium.tests.TFProspect">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFProspect@42721fe]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795229" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Prospect()[pri:0, instance:org.meto.appium.tests.TFProspect@42721fe]" started-at="2024-11-06T09:53:15 COT" name="Prospect" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Prospect -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFProspect@42721fe]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795233" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="UsoDatos()[pri:0, instance:org.meto.appium.tests.TFProspect@42721fe]" started-at="2024-11-06T09:53:15 COT" name="UsoDatos" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- UsoDatos -->
+      </class> <!-- org.meto.appium.tests.TFProspect -->
+    </test> <!-- Prospect Test -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Customer Test" finished-at="2024-11-06T09:53:15 COT" duration-ms="11">
+      <class name="org.meto.appium.tests.TFCustomer">
+        <test-method signature="Customer()[pri:0, instance:org.meto.appium.tests.TFCustomer@54dcfa5a]" started-at="2024-11-06T09:53:15 COT" name="Customer" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Customer -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFCustomer@54dcfa5a]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795288" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFCustomer@54dcfa5a]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795290" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Domicilio()[pri:0, instance:org.meto.appium.tests.TFCustomer@54dcfa5a]" started-at="2024-11-06T09:53:15 COT" name="Domicilio" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Domicilio -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFCustomer@54dcfa5a]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795294" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="InfComplementaria()[pri:0, instance:org.meto.appium.tests.TFCustomer@54dcfa5a]" started-at="2024-11-06T09:53:15 COT" name="InfComplementaria" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InfComplementaria -->
+      </class> <!-- org.meto.appium.tests.TFCustomer -->
+    </test> <!-- Customer Test -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Business Test" finished-at="2024-11-06T09:53:15 COT" duration-ms="2">
+      <class name="org.meto.appium.tests.TFBusiness">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFBusiness@56113384]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795338" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Business()[pri:0, instance:org.meto.appium.tests.TFBusiness@56113384]" started-at="2024-11-06T09:53:15 COT" name="Business" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Business -->
+      </class> <!-- org.meto.appium.tests.TFBusiness -->
+    </test> <!-- Business Test -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Rse Test" finished-at="2024-11-06T09:53:15 COT" duration-ms="5">
+      <class name="org.meto.appium.tests.TFRse">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFRse@362045c0]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795391" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Rse()[pri:0, instance:org.meto.appium.tests.TFRse@362045c0]" started-at="2024-11-06T09:53:15 COT" name="Rse" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Rse -->
+      </class> <!-- org.meto.appium.tests.TFRse -->
+    </test> <!-- Rse Test -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Proposal Test" finished-at="2024-11-06T09:53:15 COT" duration-ms="7">
+      <class name="org.meto.appium.tests.TFProposal">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFProposal@542e560f]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795429" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Propuesta()[pri:0, instance:org.meto.appium.tests.TFProposal@542e560f]" started-at="2024-11-06T09:53:15 COT" name="Propuesta" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Propuesta -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFProposal@542e560f]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795432" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Propuesta_error()[pri:0, instance:org.meto.appium.tests.TFProposal@542e560f]" started-at="2024-11-06T09:53:15 COT" name="Propuesta_error" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Propuesta_error -->
+      </class> <!-- org.meto.appium.tests.TFProposal -->
+    </test> <!-- Proposal Test -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Contract Test" finished-at="2024-11-06T09:53:15 COT" duration-ms="4">
+      <class name="org.meto.appium.tests.TFContract">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFContract@35d08e6c]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795480" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="TestContract()[pri:0, instance:org.meto.appium.tests.TFContract@35d08e6c]" started-at="2024-11-06T09:53:15 COT" name="TestContract" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestContract -->
+      </class> <!-- org.meto.appium.tests.TFContract -->
+    </test> <!-- Contract Test -->
+    <test started-at="2024-11-06T09:53:15 COT" name="Signature Test" finished-at="2024-11-06T09:53:15 COT" duration-ms="4">
+      <class name="org.meto.appium.tests.TFSignature">
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:org.meto.appium.tests.TFSignature@7ca33c24]" started-at="2024-11-06T09:53:00 COT" name="setup" finished-at="2024-11-06T09:53:14 COT" duration-ms="14346" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@7f5b9db]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.SessionNotCreatedException">
+            <message>
+              <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
+Host info: host: 'PERU-METO', ip: '172.16.3.3']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
+Host info: host: 'PERU-METO', ip: '172.16.3.3'
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:620)
+at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:163)
+at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:89)
+at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:101)
+at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:113)
+at org.meto.appium.base.TestBase.setup(TestBase.java:83)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:317)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.WebDriverException: java.lang.reflect.InvocationTargetException
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: driver.version: AndroidDriver
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:137)
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+... 25 more
+Caused by: java.lang.reflect.InvocationTargetException
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+... 29 more
+Caused by: java.io.UncheckedIOException: java.io.IOException: Se ha forzado la interrupción de una conexión existente por el host remoto
+at org.openqa.selenium.remote.http.netty.NettyHttpHandler.makeCall(NettyHttpHandler.java:73)
+at io.appium.java_client.AppiumUserAgentFilter.lambda$apply$0(AppiumUserAgentFilter.java:88)
+at org.openqa.selenium.remote.http.Filter.lambda$andFinally$1(Filter.java:55)
+at org.openqa.selenium.remote.http.netty.NettyHttpHandler.execute(NettyHttpHandler.java:48)
+at org.openqa.selenium.remote.http.netty.NettyClient.execute(NettyClient.java:96)
+at io.appium.java_client.remote.AppiumCommandExecutor.lambda$null$0(AppiumCommandExecutor.java:187)
+at org.openqa.selenium.remote.http.Filter.lambda$andFinally$1(Filter.java:55)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
+... 34 more
+Caused by: java.io.IOException: Se ha forzado la interrupción de una conexión existente por el host remoto
+at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method)
+at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276)
+at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233)
+at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223)
+at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358)
+at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:254)
+at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+at java.base/java.lang.Thread.run(Thread.java:834)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:org.meto.appium.tests.TFSignature@7ca33c24]" started-at="2024-11-06T09:53:15 COT" name="beforeMethod" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795541" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="FillSignature()[pri:0, instance:org.meto.appium.tests.TFSignature@7ca33c24]" started-at="2024-11-06T09:53:15 COT" name="FillSignature" finished-at="2024-11-06T09:53:15 COT" duration-ms="0" status="SKIP">
+          <exception class="org.openqa.selenium.SessionNotCreatedException">
+            <message>
+              <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
+Host info: host: 'PERU-METO', ip: '172.16.3.3']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
+Host info: host: 'PERU-METO', ip: '172.16.3.3'
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:620)
+at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:163)
+at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:89)
+at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:101)
+at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:113)
+at org.meto.appium.base.TestBase.setup(TestBase.java:83)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:317)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.WebDriverException: java.lang.reflect.InvocationTargetException
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: driver.version: AndroidDriver
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:137)
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+... 25 more
+Caused by: java.lang.reflect.InvocationTargetException
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+... 29 more
+Caused by: java.io.UncheckedIOException: java.io.IOException: Se ha forzado la interrupción de una conexión existente por el host remoto
+at org.openqa.selenium.remote.http.netty.NettyHttpHandler.makeCall(NettyHttpHandler.java:73)
+at io.appium.java_client.AppiumUserAgentFilter.lambda$apply$0(AppiumUserAgentFilter.java:88)
+at org.openqa.selenium.remote.http.Filter.lambda$andFinally$1(Filter.java:55)
+at org.openqa.selenium.remote.http.netty.NettyHttpHandler.execute(NettyHttpHandler.java:48)
+at org.openqa.selenium.remote.http.netty.NettyClient.execute(NettyClient.java:96)
+at io.appium.java_client.remote.AppiumCommandExecutor.lambda$null$0(AppiumCommandExecutor.java:187)
+at org.openqa.selenium.remote.http.Filter.lambda$andFinally$1(Filter.java:55)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
+... 34 more
+Caused by: java.io.IOException: Se ha forzado la interrupción de una conexión existente por el host remoto
+at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method)
+at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276)
+at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233)
+at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223)
+at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358)
+at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:254)
+at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+at java.base/java.lang.Thread.run(Thread.java:834)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FillSignature -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:org.meto.appium.tests.TFSignature@7ca33c24]" started-at="2024-11-06T09:53:15 COT" name="teardown" finished-at="1969-12-31T19:00:00 COT" duration-ms="-1730904795597" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- org.meto.appium.tests.TFCustomerGuarantor -->
-    </test> <!-- Customer Guarantor Test -->
+      </class> <!-- org.meto.appium.tests.TFSignature -->
+    </test> <!-- Signature Test -->
   </suite> <!-- Data Driven Basics -->
 </testng-results>

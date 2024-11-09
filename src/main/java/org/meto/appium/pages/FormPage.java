@@ -23,99 +23,61 @@ public class FormPage extends AndroidActions{
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 
-	//	PageFactory.initElements(new AppiumElementLocatorFactory(decoratedAppiumDriver, Duration.ofSeconds(1), new DefaultElementByBuilder(MobilePlatform.ANDROID, AutomationName.ANDROID_UIAUTOMATOR2)), this);
 		PageFactory.initElements(new AppiumElementLocatorFactory(driver, Duration.ofSeconds(5000), new DefaultElementByBuilder(MobilePlatform.ANDROID, AutomationName.ANDROID_UIAUTOMATOR2)), this);
 
 	}
 	
-	//@AndroidFindBy(id="com.android.permissioncontroller:id/permission_allow_foreground_only_button")   
-	//@AndroidFindBy(id="com.android.permissioncontroller:id/permission_allow_foreground_only_button")
 	@AndroidFindBy(xpath="//hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]")
 	private WebElement sourcex;
 	
 	@AndroidFindBy(id="com.android.permissioncontroller:id/permission_allow_button")
 	private WebElement sourcextwo;
 	
+	//@AndroidFindBy(xpath="//android.widget.Button[@text='Mientras la app está en uso']")
+	//@AndroidFindBy(id="com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+	//private WebElement toasmesg;
+	//driver.findElement(By.xpath("//android.widget.Button[@text='Mientras la app está en uso']"));
+	
+	
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Usuario']")
-	//@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
 	private WebElement nameUser;
 	
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Contraseña']")
 	private WebElement namePass;
-	
-//	@AndroidFindBy(xpath="//android.widget.EditText[@text='gender']")
-	//private WebElement maleOption;
-	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnLogin")).click();
+		
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnLogin")
 	public WebElement loginButton;
 	
 	// Sesion Local
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Agencia']")).click();
-	//@AndroidFindBy(xpath="//android.widget.EditText[@text='Agencia']") //active 2
 	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Agencia']")
 	private WebElement agencySelection;
 	
-	//@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Rol']") // Active 2
 	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Rol']")
 	private WebElement rolSelection;
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnLoginRol")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnLoginRol")
 	public WebElement rolButton;
 	
 	//Login local
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Nueva contraseña local']")).sendKeys("Prueba1234");
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Nueva contraseña local']")
 	public WebElement claveLocal1;
 	
-	//driver.findElement(By.xpath("//android.widget.EditText[@text='Confirmación de contraseña local']")).sendKeys("Prueba1234");
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Confirmación de contraseña local']")
 	public WebElement claveConfLocal;
 	
-	//driver.findElement(By.id("pe.com.surgir.surgirapp:id/btnIngresar")).click();
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnIngresar")
 	public WebElement localButton;
-	
-	//Home
-//	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/rlPropuesta")
-//	private WebElement propuestaButton;
-	
-//	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/icon_return_home")
-//	private WebElement returnButton;
-	
-//	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/btnPropuestaHome")
-//	private WebElement propuestaHome;
-	
+		
+	/*
 	public FormPage setMessageinit()
 	{
-	//	System.setProperty("illegal-access", "deny");
-	//	sourcex.click();
-	//	sourcex.click();
-		
-		
-	//	WebElement yyyy = driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]"));
-	//	AndroidTouchAction touch = new AndroidTouchAction(driver);
-//		touch.tap(TapOptions.tapOptions().withElement(ElementOption.element(yyyy))).perform();
 		WebElement msgge = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.TextView"));
 		System.out.println(msgge);
 		
 		return this;
 				
-	}
-	
-	public FormPage setMessageinittwo()
-	{
-	//	System.setProperty("illegal-access", "deny");
-	//	sourcex.click();
-	//	sourcex.click();
-
-
-		return this;
-				
-	}
-	
-	
+	}*/
+		
 	public FormPage setNameUser(String name) {
 		nameUser.sendKeys(name);
 		//driver.hideKeyboard();
@@ -127,38 +89,22 @@ public class FormPage extends AndroidActions{
 		namePass.sendKeys(pass);
 		return this;
 	}
-
-	/*
-	public void setGender(String gender) {
-		if (gender.contains("female"))
-			femaleOption.click;
-		else
-			maleOption.click;
-	}*/
 		
 	public FormPage setSubmitLogin() {
 		loginButton.click();
 		return this;
 	}
-	
-	/*
-	public void setAgencySelection(String agencyName) {
+		
+	public FormPage setAgencySelection() {
 		agencySelection.click();
-		scrollToText(agencyName);
-		driver.findElement(By.xpath("//android.widget.TextView[@text='"+agencyName+"']")).click();
-	}*/
-	
-	public FormPage setAgencySelection(String agencyName) {
-		agencySelection.click();
-		touchAgencia(agencyName);
+		touchAgencia();
 		return this;
 	
-		
 	}
 	
-	public FormPage setRolSelection(String rolName) {
+	public FormPage setRolSelection(String role) {
 		rolSelection.click();
-		touchRol(rolName);
+		touchRol(role);
 		return this;
 		
 	}

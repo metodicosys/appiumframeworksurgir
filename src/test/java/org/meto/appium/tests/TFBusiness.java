@@ -35,12 +35,12 @@ public class TFBusiness extends TestBase {
 	
 	
 	@Test
-	public void FillBusiness() throws InterruptedException{
+	public void Business() throws InterruptedException{
 		FormBusiness formBusiness = new FormBusiness(driver);
-	//FormBusiness formBusiness = formCustomer.nextCustomer();
-		
 		formBusiness.photoSelfie();
+		formBusiness.saveBusiness();
 		formBusiness.swipeScreenOneBusiness();
+		
 		formBusiness.timeAnios();
 		formBusiness.experienciaAnios();
 		formBusiness.inicioActividad("01/04/2020");
@@ -50,19 +50,6 @@ public class TFBusiness extends TestBase {
 		//formBusiness.nextBusiness();
 		FormRse formRse = formBusiness.nextBusiness();
 
-		/*
-		formRse.autoComplit();
-		formRse.giro("VE");
-		formRse.activeC1("10");
-		formRse.activeC2("15");
-		formRse.activeC3("20");
-		formRse.activeC4("25");
-		formRse.activeC5("30");
-		formRse.activeC6("35");
-		formRse.activeC7("40");
-		formRse.swipeScreenOneRse();
-		formRse.activeC8("45");
-*/
 	}
 
 

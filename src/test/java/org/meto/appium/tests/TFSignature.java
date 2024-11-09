@@ -47,28 +47,30 @@ public class TFSignature extends TestBase {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void FillSignature() throws InterruptedException{
 		//FormProspect formProspect = formPage.localButtom();
 		FormSignature formSignature = new FormSignature(driver);
-		
+		//formSignature.saveSignature();
 		formSignature.scrollToPageSignature();
 		formSignature.chekFirma();
 		formSignature.confirmaAsesor();
 		formSignature.confirmaCliente();
 		formSignature.nextConfirm();
 		formSignature.chekFirma();
-		formSignature.avance2();
+		formSignature.avance2();//avanza para luego realizar la firma
 	//	formSignature.swipeScreen();
-		formSignature.signatureCustomer();
+		formSignature.signatureCustomer(); //validando firma
 		formSignature.aceptaFirma();
 		formSignature.saveSignaturePreview();
 		formSignature.saveSignature();
 		formSignature.finishSignature();
 		formSignature.checkDate();
 		formSignature.nextDate();
+		formSignature.politicdate();
 		formSignature.finishSend();
-		formSignature.politics();
+	//	formSignature.politics();
 		/*
 		System.out.println(formProspect.segmentos());
 		if(formProspect.segmentos().equals("D")) {

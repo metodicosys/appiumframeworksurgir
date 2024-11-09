@@ -1,0 +1,9 @@
+#HU-131
+solo para caso individual.
+el balance ( activos y pasivos) se debe de habilitar segun reglas: para segmentos A y B cuando se supere el monto de 15000 soles.
+el balance ( activos y pasivos) se debe de habilitar segun reglas: para segmentos C y D cuando se supere el monto de 5000 soles.
+Si yo cambio el monto de manera manual se debe de ocultar o habilitar el campo de balance.
+la obligatoriedad de documentos: constancia de patrimonio para un credito de construccion negocios  dependera de la regla para segmentos A y B cuando se supere el monto de 15000 soles., y para C y D cuando supere el monto de 5000 soles
+Si un cliente es casado o conviviente la firma aun es opcional.
+
+

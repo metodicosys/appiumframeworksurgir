@@ -38,62 +38,82 @@ public class TFCustomer extends TestBase {
 	
 
 	@Test
-	public void FillCustomer() throws InterruptedException{
-	//	formCustomer = formProspect.bcontinuarValid();
+	public void Customer() throws InterruptedException{
 		FormCustomer formCustomer = new FormCustomer(driver);
 		formCustomer.CustomerP();
 		formCustomer.fotoExperian();
+	//	formCustomer.validPhotoExperian(); // valida foto experian
 		formCustomer.fotofrenteDni();
 		formCustomer.fotoreversoDni();
 		formCustomer.fotoCliente();
-		formCustomer.saveCustomer();
-		formCustomer.swipeScreenOneCustomer();
-		//formCustomer.segundoNombre();
+		formCustomer.bajar();
+		//formCustomer.swipeScreenOneCustomer();
+	//	formCustomer.swipeScreenOneCustomer();
 		formCustomer.gradoInstruccion();
 		formCustomer.profesionN();
+		formCustomer.ecivilselect("CASADO");//SELECCIONANDO ESTADO CIVIL CASADO
+		formCustomer.bajar2();
+		formCustomer.iletrado(false);
+		formCustomer.estadoCivil("CASADO");
+		//formCustomer.saveCustomer();
 		formCustomer.swipeScreenOneCustomer();
-		formCustomer.swipeScreenOneCustomer();
+	//	formCustomer.bajarcontacto();
 		formCustomer.prePago();
-		formCustomer.swipeScreenOneCustomer();
-	//	formCustomer.codigoArea();
-		formCustomer.saveCustomer();
 		//	formCustomer.telefonoFijo("3827271");
 		formCustomer.operadorTelef();
+		//formCustomer.saveCustomer();
 		formCustomer.swipeScreenOneCustomer();
-	//	formCustomer.nexttwoCustomer();
-		formCustomer.tipodeComprobante();
-		formCustomer.fotoComprobanteDomicilio();
-		formCustomer.saveCustomer(); // nuevo
 		formCustomer.swipeScreenOneCustomer();
-		formCustomer.departamentos();
-		formCustomer.provincias();
-		formCustomer.distritos();
-		formCustomer.urbanizacion("mi urbanizacion test");
-		formCustomer.nomDireccion("mi direccionx");
-		formCustomer.tipoVia();
-		formCustomer.swipeScreenOneCustomer();
-		formCustomer.numExterior("432");
-		formCustomer.numInterior("6");
-		formCustomer.permanenciaAnios();
-		formCustomer.referenciaUbic("mi referencia ubic");
-		formCustomer.personaenDomicilio();
-		formCustomer.swipeScreenOneCustomer();
-		formCustomer.casaqueHabita();
-		formCustomer.otrotipoDomicilio("choza");
-		//formCustomer.fotoHeritage(); /// nuevo
-	//	formCustomer.numeroDependient("1");
-		formCustomer.swipeScreenOneCustomer();
-		formCustomer.tipoReferencia();
-		formCustomer.nameReferenc("Test");
-		formCustomer.swipeScreenOneCustomer();
-		formCustomer.lastNameRef("Test");
-		formCustomer.cellReferenc("964636765");
-		formCustomer.saveCustomer();
-	//	formCustomer.nextCustomer();
-		FormBusiness formBusiness = formCustomer.nextCustomer();
+	//	formCustomer.bajarcomprobante();
+	//	formCustomer.scrollToPageCustmDom();//Bajar hasta contacto
+
+	}
+	
+	@Test
+	public void Domicilio() throws InterruptedException{
+		FormCustomer formCustomerd = new FormCustomer(driver);
+		formCustomerd.tipodeComprobante();
+		formCustomerd.fotoComprobanteDomicilio();
+
+		formCustomerd.swipeScreenOneCustomer();
+	//	formCustomerd.saveCustomer(); // nuevo
+		formCustomerd.departamentos();
+		formCustomerd.provincias();
+		formCustomerd.urbanizacion("Test de urbanizacion");
+		formCustomerd.distritos();
+		formCustomerd.saveCustomer();
+		formCustomerd.nomDireccion("mi direccionx");
+		formCustomerd.tipoVia();
+		formCustomerd.numExterior("432");
+		formCustomerd.numInterior("6");
+		formCustomerd.saveCustomer();
+		formCustomerd.swipeScreenOneCustomer();
+		//formCustomerd.nextfivCustomer();
+		formCustomerd.permanenciaAnios();
+		formCustomerd.referenciaUbic("mi referencia ubic");
+		formCustomerd.personaenDomicilio();
+		formCustomerd.swipeScreenOneCustomer();
 		
 	}
 
-
+	@Test
+	public void InfComplementaria() throws InterruptedException{
+		FormCustomer formCustomeri = new FormCustomer(driver);
+		formCustomeri.casaqueHabita();
+		formCustomeri.otrotipoDomicilio("choza");
+		//formCustomer.fotoHeritage(); /// nuevo
+	//	formCustomer.numeroDependient("1");
+		formCustomeri.swipeScreenOneCustomer();
+		formCustomeri.tipoReferencia();
+		formCustomeri.swipeScreenOneCustomer();
+		formCustomeri.nameReferenc("Test");
+	//	formCustomeri.swipeScreenOneCustomer();
+		formCustomeri.lastNameRef("Test");
+		formCustomeri.cellReferenc("964636765");
+		formCustomeri.saveCustomer();
+	//	formCustomer.nextCustomer();
+		FormBusiness formBusiness = formCustomeri.nextCustomer();
+		
+	}
 	
 }

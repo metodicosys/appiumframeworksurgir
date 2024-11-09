@@ -2,6 +2,8 @@ package org.meto.appium.tests;
 
 import org.testng.annotations.Test;
 import java.lang.reflect.Method;
+import java.time.Duration;
+import java.util.HashMap;
 
 import org.meto.appium.base.TestBase;
 import org.meto.appium.pages.FormBusiness;
@@ -12,7 +14,6 @@ import org.meto.appium.pages.FormProposal;
 import org.meto.appium.pages.FormProspect;
 import org.meto.appium.pages.FormRse;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 public class TFProspect extends TestBase {
 	FormPage formPage;
@@ -24,6 +25,12 @@ public class TFProspect extends TestBase {
 	FormContract formContract;
 	
 	@BeforeMethod
+/*	public void preSetup() {
+		Activity activity = new Activity("io.appium.android.apis","io.appium.android.apis.preference.PreferenceDependencies");
+		driver.startActivity(activity);
+		
+	}*/
+	
 	public void beforeMethod(Method method) {
 
 		formPage = new FormPage(driver);
@@ -37,34 +44,48 @@ public class TFProspect extends TestBase {
 	}
 	
 	@Test
-	public static void FillProspect() throws InterruptedException{
+	public static void Prospect() throws InterruptedException{
 		//FormProspect formProspect = formPage.localButtom();
 		FormProspect formProspect = new FormProspect(driver);
 		formProspect.PropuestaButton();
-		formProspect.ReturnButton();
+	//	formProspect.ReturnButton();
+		formProspect.btnPropuesta();
 		formProspect.PropuestaHome();
-		formProspect.setNumDoc("46424404");  //48208831 C  74883197 D    08163942
-		formProspect.Verificando();
-		formProspect.setFecCaducidad("01/01/2030");
-		formProspect.setFirstName("TestFisrtname");
-		formProspect.setSecondName("TestSecondName");
-		formProspect.setSurName("Testlastname");
+		formProspect.setNumDoc("45046379");  //     //99995424
+	//	formProspect.setNumDoc(input.get("number"));
+		formProspect.Verificando();  //99995423
+	//	formProspect.setFecCaducidad("01/01/2030");
+		formProspect.setFecNa("01/03/2000");
+	//	formProspect.validProspect(); //validar campos en blanco
+		formProspect.setFirstName("Automat Testando");
 		formProspect.avance();
-		formProspect.setSecondSureName("OtherLastName");
-		formProspect.setFecNa("01/03/1991");
+		formProspect.setSecondName("SegmentoD");
+		formProspect.setSurName("cacuarentay");
+		formProspect.pdown();
+		formProspect.setCleardata1();
+		formProspect.btnContinaur1();
+	//	formProspect.avance();
+	//	formProspect.setCleardata1();
+		formProspect.setSecondSureName("Ocho Test");
+	//	formProspect.setFecNa("01/03/2000");
 		formProspect.avance();
 		formProspect.setnMobile("990493838");
 		formProspect.setnMail("metodicosys@gmail.com");
 		formProspect.continuarProspect();
-		formProspect.scrollData();
-		formProspect.continuarData();
-		//formProspect.politics();
-		//formProspect.segmentos();
-
-		FormCustomer formCustomer = formProspect.bcontinuarValid();
 		
 	}
+	
+	@Test
+	public static void UsoDatos() throws InterruptedException{
+		FormProspect formProspectm = new FormProspect(driver);
+		formProspectm.scrollData();
+		formProspectm.continuarData();
+		formProspectm.continuaValid();//Continuar de validacion de prospecto
+	//	formProspectm.politics();//sale null
 
-
+		FormCustomer formCustomer = formProspectm.bcontinuarValid();
+	//	FormCustomer formCustomer = formProspectm.continuaValid();
+		
+	}
 	
 }

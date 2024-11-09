@@ -26,12 +26,21 @@ public class FormProposal extends AndroidActions {
 		
 	}
 	
+	//Contingencia
+	@AndroidFindBy(xpath="//android.widget.TextView[@text=\"App Surgir en contingencia\"]")
+	private WebElement enconting;
 	
-	@AndroidFindBy(xpath="(//android.widget.ImageButton[@content-desc=\"Mostrar menú desplegable\"])[1]")
+	@AndroidFindBy(xpath="//android.widget.EditText[@text='0.00']")
+	private WebElement montoaval;
+	
+	@AndroidFindBy(xpath="//android.widget.Button[@text='Calcular deuda']")
+	private WebElement deudab;
+	
+	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Producto']")
 	private WebElement mdesp;
 	
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.TextView[2]")
-	private WebElement segmentx;
+    private WebElement segmentx;
 	
 	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Destino del préstamo']")
 	private WebElement destp;
@@ -60,9 +69,13 @@ public class FormProposal extends AndroidActions {
 	@AndroidFindBy(xpath="//android.widget.EditText[@text='Fecha del primer vencimiento']")
 	private WebElement fecven;
 	
-	@AndroidFindBy(xpath="//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.AutoCompleteTextView")
+	//@AndroidFindBy(xpath="//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.AutoCompleteTextView")
+	@AndroidFindBy(xpath="//android.widget.AutoCompleteTextView[@text='Seleccionar seguros']")
 	private WebElement segbasico;
 	
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout[3]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.RelativeLayout[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.AutoCompleteTextView")
+	private WebElement segoptativ;
+		
 	@AndroidFindBy(xpath="//*[@text='Agregar']")
 	private WebElement agregopt;
 	
@@ -99,7 +112,7 @@ public class FormProposal extends AndroidActions {
 	@AndroidFindBy(id="pe.com.surgir.surgirapp:id/dialog_relationship")
 	private WebElement selectparent;
 	
-	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[4]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ImageButton")
+	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[4]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.AutoCompleteTextView")
 	private WebElement segas;
 	
 	@AndroidFindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout/android.widget.EditText")
@@ -127,6 +140,25 @@ public class FormProposal extends AndroidActions {
 	private WebElement nListo;
 	
 	
+	public FormProposal debtBtn() {
+		deudab.click();
+		return this;
+		
+	}
+	
+	public FormProposal amountguarantor(String valuen) {
+		montoaval.sendKeys(valuen);
+		return this;
+		
+	}
+	
+	//Validando Responsabilidad de cliente
+	public FormProposal validRespCustomer() {
+		validResponsabilidad();
+		return this;
+		
+	}
+	
 	public FormProposal producto() throws InterruptedException {
 		mdesp.click();
 		product();
@@ -135,12 +167,9 @@ public class FormProposal extends AndroidActions {
 		
 	}
 	
-	// aqui capturo el valos del segmento en propuesta
+	// aqui capturo el valor del segmento en propuesta
 	public FormProposal segmentos() {
-		String segmentis = segmentx.getText();
-		segmentx.getText();
-	//	this.segmentx = segmentis;
-		System.out.println(segmentis);
+		segmentosdat();
 		return this;
 		
 	}
@@ -149,7 +178,7 @@ public class FormProposal extends AndroidActions {
 	//	Thread.sleep(5000);
 		destp.click();
 		destinopr();
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 		return this;
 		
 	}
@@ -216,6 +245,14 @@ public class FormProposal extends AndroidActions {
 		return this;
 		
 	}
+	
+	public FormProposal seguroOptative() {
+		segoptativ.click();
+		seguropt();
+		return this;
+		
+	}
+	
 	
 	public FormProposal addOptative() {
 		agregopt.click();
@@ -289,9 +326,6 @@ public class FormProposal extends AndroidActions {
 	public FormProposal relationship() {
 		selectparent.click();
 		scrollToTextRelation();
-		//((PressesKey) driver).pressKey(new KeyEvent(AndroidKey.ESCAPE));
-	//	driver.findElement(By.xpath("//*[@text='"+relship+"']")).click();
-		//parentesc();
 		return this;
 		
 	}
@@ -322,6 +356,13 @@ public class FormProposal extends AndroidActions {
 		
 	}
 	
+	public FormProposal  mextOneResp() {
+		crollToPageResp();
+		return this;
+		
+	}
+	
+
 	public FormProposal nextOneProposal() {
 		scrollToPageProposal();
 		return this;
@@ -356,13 +397,19 @@ public class FormProposal extends AndroidActions {
 		
 	}
 	
-	/*
-	public FormContract nextProposal() {
-		nextprop.click();
-		return new FormContract(driver);
-		
-	}*/
-	
+	public FormProposal swipeScreenOneRse() {
+		//swipeScreen();
+			String toastMessage = enconting.getAttribute("name");
+			System.out.println("Continggencia: "+ toastMessage);
+			if (toastMessage.contains("contingencia")) {
+				swipeScreen2(); //concontingencia
+			}else {
+				swipeScreen();
+			}
+			
+			return this;
+			
+	}
 	
 	public FormContract saveProposal() throws InterruptedException  {
 		nextprop.click();
@@ -371,12 +418,5 @@ public class FormProposal extends AndroidActions {
 		
 	}
 	
-	/*
-	public FormContract passContract() {
-		ncontrato.click();
-		ncontrato.click();
-		return new FormContract(driver);
-		
-	}*/
 	
 }
