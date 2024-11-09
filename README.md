@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
@@ -18,3 +19,7 @@ If you want to learn more about creating good readme files then refer the follow
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Chakra Core](https://github.com/Microsoft/ChakraCore)
+=======
+# appiumframeworksurgir
+Pruebas automatizadas del flujo de creación de solicitud d crédito
+>>>>>>> ab97a0874db9c1a4a15045fb7f09b3822b33cff6
